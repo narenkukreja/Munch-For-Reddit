@@ -5,11 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,36 +16,25 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.bumptech.glide.Glide;
-import com.example.naren.mango.OnSwipeTouchListener;
 import com.example.naren.mango.R;
 import com.example.naren.mango.activities.ExpandedImageView;
 import com.example.naren.mango.activities.GifActivity;
-import com.example.naren.mango.activities.ImageGalleryActivity;
-import com.example.naren.mango.activities.WebActivity;
 import com.example.naren.mango.activities.YoutubeActivity;
 import com.example.naren.mango.adapters.CommentAdapter;
-import com.example.naren.mango.adapters.CommentRecyclerViewAdapter;
-import com.example.naren.mango.adapters.RecyclerViewAdapter;
 import com.example.naren.mango.model.Comment;
-import com.example.naren.mango.model.RedditPost;
 import com.example.naren.mango.network.MySingleton;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-
-import uk.co.senab.photoview.PhotoViewAttacher;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -136,35 +122,10 @@ public class DetailPostFragment extends Fragment {
         activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         activity.getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-
         bundle = getActivity().getIntent().getExtras();
         mViewPager = (ViewPager) getActivity().findViewById(R.id.viewPager);
 
-
         mLinearLayout = (LinearLayout) rootView.findViewById(R.id.container);
-
-        mViewPager.setOnTouchListener(new OnSwipeTouchListener(getActivity()) {
-            @Override
-            public void onSwipeDown() {
-                Toast.makeText(getContext(), "Down", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onSwipeLeft() {
-                Toast.makeText(getContext(), "Left", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onSwipeUp() {
-                Toast.makeText(getContext(), "Up", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onSwipeRight() {
-                Toast.makeText(getContext(), "Right", Toast.LENGTH_SHORT).show();
-            }
-        });
-
 
         initializeBundleData();
 

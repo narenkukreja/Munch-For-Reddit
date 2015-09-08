@@ -1,10 +1,13 @@
 package com.example.naren.mango.activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.naren.mango.R;
@@ -20,7 +23,8 @@ public class YoutubeActivity extends YouTubeBaseActivity implements YouTubePlaye
 
     private String youtubeUrl;
     private String normalYoutubeUrl;
-    private String otherYoutubeUrl;
+    private String browserYoutubeUrl;
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +33,8 @@ public class YoutubeActivity extends YouTubeBaseActivity implements YouTubePlaye
 
         Bundle bundle = getIntent().getExtras();
         youtubeUrl = bundle.getString("youtube_link");
+        browserYoutubeUrl =  bundle.getString("youtube_link");
+
 
         if (youtubeUrl.contains("youtube")){
 
@@ -40,8 +46,51 @@ public class YoutubeActivity extends YouTubeBaseActivity implements YouTubePlaye
         }
 
 
+
         YouTubePlayerView youTubePlayerView = (YouTubePlayerView) findViewById(R.id.youtube_player);
         youTubePlayerView.initialize(API_KEY, this);
+
+    }
+
+    public void onClick(View view) {
+
+        Intent intent = null;
+
+        switch (view.getId()) {
+
+
+            case R.id.youtube_root:
+
+                finish();
+
+                break;
+
+            case R.id.action_open_browser:
+
+                intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(browserYoutubeUrl));
+                startActivity(intent);
+
+                break;
+
+
+            case R.id.action_share:
+
+                intent = new Intent(Intent.ACTION_SEND);
+                Uri comicUri = Uri.parse(browserYoutubeUrl);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_TEXT, comicUri.toString());
+                startActivity(Intent.createChooser(intent, "Share with"));
+
+                break;
+
+            case R.id.action_close:
+
+                finish();
+
+                break;
+
+        }
 
     }
 

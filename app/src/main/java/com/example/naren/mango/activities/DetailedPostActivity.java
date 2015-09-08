@@ -1,6 +1,5 @@
 package com.example.naren.mango.activities;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,32 +7,17 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.example.naren.mango.OnSwipeTouchListener;
 import com.example.naren.mango.R;
-import com.example.naren.mango.fragments.AllFragment;
-import com.example.naren.mango.fragments.ArtFragment;
-import com.example.naren.mango.fragments.AskRedditFragment;
-import com.example.naren.mango.fragments.DIYFragment;
 import com.example.naren.mango.fragments.DetailPostFragment;
 import com.example.naren.mango.fragments.DetailPostWebFragment;
-import com.example.naren.mango.fragments.DocumentariesFragment;
-import com.example.naren.mango.fragments.FrontPageFragment;
 import com.hannesdorfmann.swipeback.Position;
 import com.hannesdorfmann.swipeback.SwipeBack;
-
-import uk.co.senab.photoview.PhotoViewAttacher;
 
 public class DetailedPostActivity extends AppCompatActivity{
 
