@@ -7,79 +7,49 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+        android:layout_height="wrap_content" />
 
-    <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/all_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="481dp"
+        >
+
+    </android.support.v7.widget.RecyclerView>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:background="@color/black"
+        android:orientation="horizontal"
+        android:padding="3dp">
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/action_open_browser"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            tools:context="com.example.naren.mango.fragments.AllFragment"
-            android:weightSum="1">
+            android:layout_weight="1"
+            android:onClick="onClick"
+            android:src="@drawable/ic_open_in_browser_white_24dp" />
 
+        <ImageView
+            android:id="@+id/action_share"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="onClick"
+            android:src="@drawable/ic_share_white_24dp"/>
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/all_recyclerview"
-                android:layout_width="match_parent"
-                android:layout_height="481dp"
-                android:layout_weight="1">
+        <ImageView
+            android:id="@+id/action_close"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="onClick"
+            android:src="@drawable/ic_close_white_24dp"/>
 
-            </android.support.v7.widget.RecyclerView>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/black">
-
-                <LinearLayout
-                    android:padding="3dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:onClick="onClick"
-                        android:id="@+id/action_open_browser"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:src="@drawable/ic_open_in_browser_white_18dp"/>
-
-                    <ImageView
-                        android:onClick="onClick"
-                        android:id="@+id/action_share"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:src="@drawable/ic_share_white_18dp"/>
-
-                    <ImageView
-                        android:onClick="onClick"
-                        android:id="@+id/action_close"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:src="@drawable/ic_close_white_18dp"/>
-
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-    </ScrollView>
-
-
+    </LinearLayout>
 
 
 </LinearLayout>

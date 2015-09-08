@@ -160,7 +160,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="8dp">
+                android:layout_marginLeft="10dp">
 
                 <TextView
                     android:id="@+id/post_score"
