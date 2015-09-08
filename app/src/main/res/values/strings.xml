@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Mango</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string name="open_gallery">Open In Browser</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_expanded_image_view">ExpandedImageView</string>
+    <string name="title_activity_image_gallery">ImageGalleryActivity</string>
+    <string name="title_activity_web">WebActivity</string>
+    <string name="title_activity_gif">GifActivity</string>
+    <string name="title_activity_youtube">YoutubeActivity</string>
+    <string name="title_activity_gif_view">GifView</string>
+    <string name="title_activity_detailed_post">DetailedPostActivity</string>
+    <string name="title_activity_detailed_self_post">DetailedSelfPostActivity</string>
+    <string name="action_sort">Sort</string>
+    <string name="action_refresh">Refresh</string>
+    <string name="action_reply">Reply</string>
+    <string name="action_goBack">Back</string>
+    <string name="action_goForward">Forward</string>
+</resources>

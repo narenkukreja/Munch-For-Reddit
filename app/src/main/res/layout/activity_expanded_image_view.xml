@@ -1,0 +1,68 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical"
+    tools:context="com.example.naren.mango.activities.ExpandedImageView">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <uk.co.senab.photoview.PhotoView
+        android:id="@+id/expanded_image"
+        android:layout_width="match_parent"
+        android:layout_height="475dp"
+        android:layout_below="@+id/toolbar"
+        android:layout_gravity="center"
+        android:background="@color/black"
+        android:layout_marginBottom="10dp"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:onClick="onClick"
+            android:id="@+id/action_open_browser"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_open_in_browser_white_18dp"/>
+
+        <ImageView
+            android:onClick="onClick"
+            android:id="@+id/action_download"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_file_download_white_18dp"/>
+
+        <ImageView
+            android:onClick="onClick"
+            android:id="@+id/action_share"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_share_white_18dp"/>
+
+        <ImageView
+            android:onClick="onClick"
+            android:id="@+id/action_close"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_close_white_18dp"/>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

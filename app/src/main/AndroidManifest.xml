@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.naren.mango" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".network.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.ExpandedImageView"
+            android:label="@string/title_activity_expanded_image_view" >
+        </activity>
+        <activity
+            android:name=".activities.ImageGalleryActivity"
+            android:label="@string/title_activity_image_gallery" >
+        </activity>
+        <activity
+            android:name=".activities.WebActivity"
+            android:label="@string/title_activity_web" >
+        </activity>
+        <activity
+            android:name=".activities.YoutubeActivity"
+            android:label="@string/title_activity_youtube" >
+        </activity>
+        <activity
+            android:name=".activities.GifActivity"
+            android:label="@string/title_activity_gif" >
+        </activity>
+        <activity
+            android:name=".activities.DetailedPostActivity"
+            android:label="@string/title_activity_detailed_post" >
+        </activity>
+        <activity
+            android:name=".activities.DetailedSelfPostActivity"
+            android:label="@string/title_activity_detailed_self_post" >
+        </activity>
+    </application>
+
+</manifest>

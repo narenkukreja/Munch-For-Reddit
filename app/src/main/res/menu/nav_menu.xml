@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_account_circle_white_24dp"
+            android:title="Profile" />
+        <item
+            android:id="@+id/nav_messages"
+            android:icon="@drawable/ic_email_white_24dp"
+            android:title="Messages" />
+        <item
+            android:id="@+id/nav_user"
+            android:icon="@drawable/ic_face_white_24dp"
+            android:title="User" />
+        <item
+            android:id="@+id/nav_Subreddit"
+            android:icon="@drawable/ic_bookmark_white_24dp"
+            android:title="Subreddit" />
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_settings_white_24dp"
+            android:title="Settings" />
+
+    </group>
+
+    <group android:checkableBehavior="single">
+
+        <item android:title="Subreddits">
+
+
+            <menu>
+                <item
+                    android:id="@+id/item_frontpage"
+                    android:title="frontpage" />
+                <item
+                    android:id="@+id/item_all"
+                    android:title="all" />
+                <item
+                    android:id="@+id/item_art"
+                    android:title="Art" />
+                <item
+                    android:id="@+id/item_askreddit"
+                    android:title="AskReddit" />
+                <item
+                    android:id="@+id/item_diy"
+                    android:title="DIY" />
+                <item
+                    android:id="@+id/item_documentaries"
+                    android:title="Documentaries" />
+
+
+                <!--<item android:title="Earthporn" />-->
+                <!--<item android:title="Fitness" />-->
+                <!--<item android:title="Futurology" />-->
+                <!--<item android:title="GetMotivated" />-->
+                <!--<item android:title="IAmA" />-->
+                <!--<item android:title="InternetIsBeautiful" />-->
+                <!--<item android:title="Jokes" />-->
+                <!--<item android:title="LifeProTips" />-->
+                <!--<item android:title="Music" />-->
+                <!--<item android:title="OldSchoolCool" />-->
+                <!--<item android:title="ShowerThoughts" />-->
+                <!--<item android:title="TwoXChromosomes" />-->
+                <!--<item android:title="UpliftingNews" />-->
+                <!--<item android:title="WritingPrompts" />-->
+                <!--<item android:title="announcements" />-->
+                <!--<item android:title="askscience" />-->
+                <!--<item android:title="aww" />-->
+                <!--<item android:title="blog" />-->
+                <!--<item android:title="books" />-->
+                <!--<item android:title="creepy" />-->
+                <!--<item android:title="dataisbeautiful" />-->
+                <!--<item android:title="explainlikeimfive" />-->
+                <!--<item android:title="food" />-->
+                <!--<item android:title="funny" />-->
+                <!--<item android:title="gadgets" />-->
+                <!--<item android:title="gaming" />-->
+                <!--<item android:title="gifs" />-->
+                <!--<item android:title="history" />-->
+                <!--<item android:title="listentothis" />-->
+                <!--<item android:title="mildlyinteresting" />-->
+                <!--<item android:title="movies" />-->
+                <!--<item android:title="news" />-->
+                <!--<item android:title="nosleep" />-->
+                <!--<item android:title="nottheonion" />-->
+                <!--<item android:title="personalfinance" />-->
+                <!--<item android:title="philosophy" />-->
+                <!--<item android:title="photoshopbattles" />-->
+                <!--<item android:title="pics" />-->
+                <!--<item android:title="science" />-->
+                <!--<item android:title="space" />-->
+                <!--<item android:title="sports" />-->
+                <!--<item android:title="television" />-->
+                <!--<item android:title="tifu" />-->
+                <!--<item android:title="todayilearned" />-->
+                <!--<item android:title="videos" />-->
+                <!--<item android:title="worldnews" />-->
+
+
+            </menu>
+        </item>
+
+
+    </group>
+
+</menu>
