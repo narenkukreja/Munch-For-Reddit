@@ -1,6 +1,7 @@
 package com.example.naren.mango.activities;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -29,6 +30,8 @@ import com.example.naren.mango.fragments.DetailPostFragment;
 import com.example.naren.mango.fragments.DetailPostWebFragment;
 import com.example.naren.mango.fragments.DocumentariesFragment;
 import com.example.naren.mango.fragments.FrontPageFragment;
+import com.hannesdorfmann.swipeback.Position;
+import com.hannesdorfmann.swipeback.SwipeBack;
 
 import uk.co.senab.photoview.PhotoViewAttacher;
 
@@ -38,17 +41,44 @@ public class DetailedPostActivity extends AppCompatActivity{
     private ViewPager mViewPager;
     private ViewPagerAdapter mAdapter;
     private LinearLayout mLinearLayout;
+    private int mPagerPosition;
+    private int mPagerOffsetPixels;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detailed_post);
+
+        SwipeBack.attach(this, Position.LEFT)
+                .setContentView(R.layout.activity_detailed_post)
+                .setSwipeBackView(R.layout.swipeback_custom)
+                .setDividerAsSolidColor(Color.WHITE)
+                .setDividerSize(2)
+                .setOnInterceptMoveEventListener(new SwipeBack.OnInterceptMoveEventListener() {
+                    @Override
+                    public boolean isViewDraggable(View view, int dx, int x, int y) {
+
+                        if (view == mViewPager) {
+                            return !(mPagerPosition == 0 && mPagerOffsetPixels == 0)
+                                    || dx < 0;
+                        }
+
+                        return false;
+                    }
+                });
 
 
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
         mAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(mAdapter);
 
+        mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                mPagerPosition = position;
+                mPagerOffsetPixels = positionOffsetPixels;
+            }
+
+        });
     }
 
 
