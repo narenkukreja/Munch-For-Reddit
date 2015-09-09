@@ -15,6 +15,8 @@ import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
+import com.hannesdorfmann.swipeback.Position;
+import com.hannesdorfmann.swipeback.SwipeBack;
 
 public class YoutubeActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
 
@@ -29,22 +31,25 @@ public class YoutubeActivity extends YouTubeBaseActivity implements YouTubePlaye
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_youtube);
+
+        SwipeBack.attach(this, Position.LEFT)
+                .setContentView(R.layout.activity_youtube)
+                .setSwipeBackView(R.layout.swipeback_custom);
+
 
         Bundle bundle = getIntent().getExtras();
         youtubeUrl = bundle.getString("youtube_link");
-        browserYoutubeUrl =  bundle.getString("youtube_link");
+        browserYoutubeUrl = bundle.getString("youtube_link");
 
 
-        if (youtubeUrl.contains("youtube")){
+        if (youtubeUrl.contains("youtube")) {
 
             normalYoutubeUrl = youtubeUrl.substring(youtubeUrl.lastIndexOf("=") + 1);
 
         } else {
 
-            normalYoutubeUrl = youtubeUrl.substring(youtubeUrl.lastIndexOf("/")+1);
+            normalYoutubeUrl = youtubeUrl.substring(youtubeUrl.lastIndexOf("/") + 1);
         }
-
 
 
         YouTubePlayerView youTubePlayerView = (YouTubePlayerView) findViewById(R.id.youtube_player);

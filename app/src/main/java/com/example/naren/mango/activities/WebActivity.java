@@ -12,6 +12,8 @@ import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import com.example.naren.mango.R;
+import com.hannesdorfmann.swipeback.Position;
+import com.hannesdorfmann.swipeback.SwipeBack;
 
 public class WebActivity extends AppCompatActivity {
 
@@ -23,7 +25,10 @@ public class WebActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_web);
+
+        SwipeBack.attach(this, Position.LEFT)
+                .setContentView(R.layout.activity_web)
+                .setSwipeBackView(R.layout.swipeback_custom);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
