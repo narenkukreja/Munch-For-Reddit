@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.naren.mango.R;
@@ -71,6 +72,12 @@ public class GifActivity extends AppCompatActivity {
         Intent intent = null;
 
         switch (view.getId()) {
+
+            case R.id.root_gif:
+
+                finish();
+
+                break;
 
             case R.id.action_open_browser:
 
@@ -205,6 +212,14 @@ public class GifActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+
+        if (id == android.R.id.home) {
+
+            finish();
+
+            return true;
+
         }
 
         return super.onOptionsItemSelected(item);
