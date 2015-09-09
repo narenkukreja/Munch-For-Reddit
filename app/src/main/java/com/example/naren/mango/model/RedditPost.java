@@ -3,7 +3,7 @@ package com.example.naren.mango.model;
 
 public class RedditPost {
 
-    public static final String FRONT_PAGE_URL = "https://www.reddit.com/r/videos/.json?raw_json=1";
+    public static final String FRONT_PAGE_URL = "https://www.reddit.com/r/gifs.json?raw_json=1";
     public static final String ALL_PAGE_URL = "https://www.reddit.com/r/all.json?raw_json=1";
     public static final String ART_PAGE_URL = "https://www.reddit.com/r/art.json?raw_json=1";
     public static final String ASKREDDIT_PAGE_URL = "https://www.reddit.com/r/askreddit.json?raw_json=1";
@@ -12,9 +12,17 @@ public class RedditPost {
 
     public static final String AFTER_ENDPOINT = "&after=";
 
-    private String title, url, after, domain, author, subreddit, selftext_html, permalink;
+    private String title, url, after, domain, author, subreddit, selftext_html, permalink, thumbnail;
     private int score, comments;
     private long time;
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
+    }
 
     public long getTime() {
         return time;

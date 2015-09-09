@@ -168,6 +168,7 @@ public class FrontPageFragment extends Fragment {
 
                         String title = childrenArray.getJSONObject(i).getJSONObject("data").getString("title");
                         String url = childrenArray.getJSONObject(i).getJSONObject("data").getString("url");
+                        String thumbnail = childrenArray.getJSONObject(i).getJSONObject("data").getString("thumbnail");
                         after = response.getJSONObject("data").getString("after");
 
                         String jpegImageUrl = url + ".jpg";
@@ -184,6 +185,7 @@ public class FrontPageFragment extends Fragment {
                         long time = childrenArray.getJSONObject(i).getJSONObject("data").getInt("created_utc");
 
                         post.setUrl(url);
+                        post.setThumbnail(thumbnail);
 
                         if (domain.contains("imgur") && url.contains("gallery") && url.contains("imgur")) {
                             post.setUrl(url);
@@ -264,8 +266,11 @@ public class FrontPageFragment extends Fragment {
 
                         post = new RedditPost();
 
+                        post = new RedditPost();
+
                         String title = childrenArray.getJSONObject(i).getJSONObject("data").getString("title");
                         String url = childrenArray.getJSONObject(i).getJSONObject("data").getString("url");
+                        String thumbnail = childrenArray.getJSONObject(i).getJSONObject("data").getString("thumbnail");
                         String after = response.getJSONObject("data").getString("after");
 
                         String jpegImageUrl = url + ".jpg";
@@ -274,14 +279,15 @@ public class FrontPageFragment extends Fragment {
                         String author = childrenArray.getJSONObject(i).getJSONObject("data").getString("author");
                         String subreddit = childrenArray.getJSONObject(i).getJSONObject("data").getString("subreddit");
                         String domain = childrenArray.getJSONObject(i).getJSONObject("data").getString("domain");
-                        long time = childrenArray.getJSONObject(i).getJSONObject("data").getInt("created_utc");
                         String permalink = childrenArray.getJSONObject(i).getJSONObject("data").getString("permalink");
                         String selfttext_html = childrenArray.getJSONObject(i).getJSONObject("data").getString("selftext_html");
 
                         int score = childrenArray.getJSONObject(i).getJSONObject("data").getInt("score");
                         int comments = childrenArray.getJSONObject(i).getJSONObject("data").getInt("num_comments");
+                        long time = childrenArray.getJSONObject(i).getJSONObject("data").getInt("created_utc");
 
                         post.setUrl(url);
+                        post.setThumbnail(thumbnail);
 
                         if (domain.contains("imgur") && url.contains("gallery") && url.contains("imgur")) {
                             post.setUrl(url);

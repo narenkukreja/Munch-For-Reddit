@@ -25,13 +25,41 @@
             android:orientation="vertical"
             android:clickable="true">
 
-            <ImageView
-                android:id="@+id/post_image_imageView"
+            <RelativeLayout
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:src="@mipmap/ic_launcher" />
+                android:layout_height="fill_parent">
 
+                <ImageView
+                    android:id="@+id/post_image_imageView"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/post_image_thumbnail_link"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/post_image_imageView"
+                    android:text="[Gif]"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#fffdff"
+                    android:textSize="16sp"
+                    android:gravity="bottom"
+                    android:layout_alignTop="@+id/post_image_imageView"
+                    android:layout_alignBottom="@+id/post_image_imageView"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+
+
+            </RelativeLayout>
+
+            
             <TextView
                 android:id="@+id/post_title_textView"
                 android:layout_width="wrap_content"
@@ -41,8 +69,6 @@
                 android:text="Test Title"
                 android:textColor="#fffdff"
                 android:textSize="16sp" />
-
-
 
             <LinearLayout
                 android:id="@+id/post_link_placeholder"
@@ -68,7 +94,7 @@
                     <TextView
                         android:id="@+id/link_domain"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:gravity="center"
                         android:text="en.wikipedia.org"
                         android:visibility="visible"

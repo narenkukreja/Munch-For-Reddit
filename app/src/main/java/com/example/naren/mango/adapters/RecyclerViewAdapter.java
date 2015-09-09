@@ -63,6 +63,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         final String domain = redditPost.getDomain();
         final String selftext_html = redditPost.getSelftext_html();
         final String permalink = redditPost.getPermalink();
+        String thumbnail = redditPost.getThumbnail();
         final int postScore = redditPost.getScore();
         final int comments = redditPost.getComments();
 
@@ -94,6 +95,85 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
             }
         });
+
+
+        if (thumbnail != null && thumbnail.contains(".jpg") && url.contains("youtube") ||
+                thumbnail != null && thumbnail.contains(".jpg") && url.contains("youtu.be") ||
+                thumbnail != null && thumbnail.contains(".png") && url.contains("youtube") ||
+                thumbnail != null && thumbnail.contains(".png") && url.contains("youtu.be")){
+
+            Glide.with(context).load(thumbnail).asBitmap().into(holder.mPostImage);
+            holder.mPostThumbnailLink.setVisibility(View.VISIBLE);
+            holder.mPostThumbnailLink.setText("[Youtube] \n" + domainUrl);
+
+            holder.mPostImage.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View view) {
+
+                    Intent intent = new Intent(context, YoutubeActivity.class);
+
+                    Bundle bundle = new Bundle();
+
+                    bundle.putString("youtube_link", url);
+
+                    intent.putExtras(bundle);
+                    context.startActivity(intent);
+
+                }
+            });
+
+
+        } else if (thumbnail != null && thumbnail.contains(".jpg") && url.contains(".gif") ||
+                thumbnail != null && thumbnail.contains(".jpg") && url.contains(".gifv") ||
+                thumbnail != null && thumbnail.contains(".jpg") && url.contains(".gfy") ||
+                thumbnail != null && thumbnail.contains(".jpg") && url.contains(".gfycat") ||
+
+                thumbnail != null && thumbnail.contains(".png") && url.contains(".gif") ||
+                thumbnail != null && thumbnail.contains(".png") && url.contains(".gifv") ||
+                thumbnail != null && thumbnail.contains(".png") && url.contains(".gfy") ||
+                thumbnail != null && thumbnail.contains(".png") && url.contains(".gfycat")){
+
+
+            Glide.with(context).load(thumbnail).asBitmap().into(holder.mPostImage);
+            holder.mPostThumbnailLink.setVisibility(View.VISIBLE);
+            holder.mPostThumbnailLink.setText("[Gif]\n" + domainUrl);
+
+            holder.mPostImage.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View view) {
+
+                    Intent intent = new Intent(context, GifActivity.class);
+
+                    Bundle bundle = new Bundle();
+
+                    bundle.putString("gif", url);
+
+                    intent.putExtras(bundle);
+                    context.startActivity(intent);
+
+                }
+            });
+
+
+        }else if (thumbnail != null && thumbnail.contains("nsfw")){
+
+
+
+
+        } else if (thumbnail != null && thumbnail.contains("")){
+
+
+        } else if (thumbnail == null){
+
+
+
+        } else {
+
+            holder.mPostThumbnailLink.setVisibility(View.GONE);
+
+        }
 
         holder.mMainContent.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,7 +225,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         if (url.contains("youtube") || url.contains("youtu.be")) {
 
-            holder.mPlaceholder.setVisibility(View.VISIBLE);
+            if (holder.mPostThumbnailLink.getVisibility() == View.VISIBLE){
+
+                holder.mPlaceholder.setVisibility(View.GONE);
+
+
+            } else {
+
+                holder.mPlaceholder.setVisibility(View.VISIBLE);
+
+
+            }
+
 
             holder.mLinkDomain.setText("[Youtube] " + domainUrl);
 
@@ -167,8 +258,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         } else if (url.contains("gallery") && url.contains("imgur") && domainUrl.contains("imgur")) {
 
-            holder.mPlaceholder.setVisibility(View.VISIBLE);
+            if (holder.mPostThumbnailLink.getVisibility() == View.VISIBLE){
 
+                holder.mPlaceholder.setVisibility(View.GONE);
+
+
+            } else {
+
+                holder.mPlaceholder.setVisibility(View.VISIBLE);
+
+
+            }
             holder.mLinkDomain.setText("[Album] " + domainUrl);
 
             holder.mLinkDomain.setOnClickListener(new View.OnClickListener() {
@@ -189,8 +289,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         } else if (url.contains("imgur.com/a")) {
 
-            holder.mPlaceholder.setVisibility(View.VISIBLE);
+            if (holder.mPostThumbnailLink.getVisibility() == View.VISIBLE){
 
+                holder.mPlaceholder.setVisibility(View.GONE);
+
+
+            } else {
+
+                holder.mPlaceholder.setVisibility(View.VISIBLE);
+
+
+            }
             holder.mLinkDomain.setText("[Album] " + domainUrl);
 
             holder.mLinkDomain.setOnClickListener(new View.OnClickListener() {
@@ -214,8 +323,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         } else if (url.contains(".gif") || url.contains(".gifv") || url.contains("gfy") ||
                 url.contains("gfycat")) {
 
-            holder.mPlaceholder.setVisibility(View.VISIBLE);
+            if (holder.mPostThumbnailLink.getVisibility() == View.VISIBLE){
 
+                holder.mPlaceholder.setVisibility(View.GONE);
+
+
+            } else {
+
+                holder.mPlaceholder.setVisibility(View.VISIBLE);
+
+
+            }
             holder.mLinkDomain.setText("[Gif] " + domainUrl);
 
             holder.mLinkDomain.setOnClickListener(new View.OnClickListener() {
@@ -247,8 +365,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 !domainUrl.contains("youtu.be") &&
                 !domainUrl.contains("gfycat")) {
 
-            holder.mPlaceholder.setVisibility(View.VISIBLE);
+            if (holder.mPostThumbnailLink.getVisibility() == View.VISIBLE){
 
+                holder.mPlaceholder.setVisibility(View.GONE);
+
+
+            } else {
+
+                holder.mPlaceholder.setVisibility(View.VISIBLE);
+
+
+            }
             holder.mLinkDomain.setText("[Link] " + domainUrl);
 
             holder.mLinkDomain.setOnClickListener(new View.OnClickListener() {
@@ -268,7 +395,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         } else {
 
-            holder.mPlaceholder.setVisibility(View.GONE);
+                holder.mPlaceholder.setVisibility(View.GONE);
+
         }
 
         holder.mPostTitle.setText(redditPost.getTitle());
@@ -288,7 +416,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         private TextView mPostTitle, mPostScore, mComments, mSubreddit, mAuthor,
-                mDomain, mTime, mLinkDomain;
+                mDomain, mTime, mLinkDomain, mPostThumbnailLink;
         private ImageView mPostImage;
         private LinearLayout mPlaceholder, mMainContent;
 
@@ -297,6 +425,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
             mPostTitle = (TextView) itemView.findViewById(R.id.post_title_textView);
             mPostImage = (ImageView) itemView.findViewById(R.id.post_image_imageView);
+            mPostThumbnailLink = (TextView) itemView.findViewById(R.id.post_image_thumbnail_link);
             mPlaceholder = (LinearLayout) itemView.findViewById(R.id.post_link_placeholder);
             mPostScore = (TextView) itemView.findViewById(R.id.post_score);
             mComments = (TextView) itemView.findViewById(R.id.post_comments);

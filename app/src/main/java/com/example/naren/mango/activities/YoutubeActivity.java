@@ -26,7 +26,6 @@ public class YoutubeActivity extends YouTubeBaseActivity implements YouTubePlaye
     private String youtubeUrl;
     private String normalYoutubeUrl;
     private String browserYoutubeUrl;
-    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
