@@ -23,6 +23,7 @@ import com.example.naren.mango.activities.ImageGalleryActivity;
 import com.example.naren.mango.activities.WebActivity;
 import com.example.naren.mango.activities.YoutubeActivity;
 import com.example.naren.mango.model.RedditPost;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -56,7 +57,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         final RedditPost redditPost = posts.get(position);
 
         final String url = redditPost.getUrl();
-        final String domainUrl = redditPost.getDomain();
+
+        final String jpegImageUrl = url + ".jpg";
+
         final String title = redditPost.getTitle();
         final String author = redditPost.getAuthor();
         final String subreddit = redditPost.getSubreddit();
@@ -64,6 +67,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         final String selftext_html = redditPost.getSelftext_html();
         final String permalink = redditPost.getPermalink();
         String thumbnail = redditPost.getThumbnail();
+        String youtube_thumbnail = redditPost.getYoutubeThumbnail();
         final int postScore = redditPost.getScore();
         final int comments = redditPost.getComments();
 
@@ -77,67 +81,66 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         holder.mTime.setText(hour + " hrs ago");
 
-        Glide.with(context).load(url).asBitmap().into(holder.mPostImage);
+        Glide.with(context).load(url).into(holder.mPostImage);
 
-        holder.mPostImage.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View view) {
+        if (domain.equals("imgur.com") || domain.equals("i.imgur.com") ||
+                domain.equals("m.imgur.com")) {
 
-                Intent intent = new Intent(context, ExpandedImageView.class);
+            if (!url.equals(jpegImageUrl)) {
 
-                Bundle bundle = new Bundle();
+                Glide.with(context).load(jpegImageUrl).into(holder.mPostImage);
+                holder.mPlaceholder.setVisibility(View.GONE);
 
-                bundle.putString("image", url);
+                holder.mPostImage.setOnClickListener(new View.OnClickListener() {
 
-                intent.putExtras(bundle);
-                context.startActivity(intent);
+                    @Override
+                    public void onClick(View view) {
+
+                        Intent intent = new Intent(context, ExpandedImageView.class);
+
+                        Bundle bundle = new Bundle();
+
+                        bundle.putString("image", jpegImageUrl);
+
+                        intent.putExtras(bundle);
+                        context.startActivity(intent);
+
+                    }
+                });
+
+            } else {
+
+                Glide.with(context).load(url).into(holder.mPostImage);
+                holder.mPlaceholder.setVisibility(View.GONE);
+
+                holder.mPostImage.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View view) {
+
+                        Intent intent = new Intent(context, ExpandedImageView.class);
+
+                        Bundle bundle = new Bundle();
+
+                        bundle.putString("image", jpegImageUrl);
+
+                        intent.putExtras(bundle);
+                        context.startActivity(intent);
+
+                    }
+                });
 
             }
-        });
 
+        }
 
-        if (thumbnail != null && thumbnail.contains(".jpg") && url.contains("youtube") ||
-                thumbnail != null && thumbnail.contains(".jpg") && url.contains("youtu.be") ||
-                thumbnail != null && thumbnail.contains(".png") && url.contains("youtube") ||
-                thumbnail != null && thumbnail.contains(".png") && url.contains("youtu.be")){
+        if (url.contains(".gif") || url.contains("gfy")) {
 
-            Glide.with(context).load(thumbnail).asBitmap().into(holder.mPostImage);
-            holder.mPostThumbnailLink.setVisibility(View.VISIBLE);
-            holder.mPostThumbnailLink.setText("[Youtube] \n" + domainUrl);
+            Glide.with(context).load(thumbnail).into(holder.mPostImage);
 
-            holder.mPostImage.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View view) {
-
-                    Intent intent = new Intent(context, YoutubeActivity.class);
-
-                    Bundle bundle = new Bundle();
-
-                    bundle.putString("youtube_link", url);
-
-                    intent.putExtras(bundle);
-                    context.startActivity(intent);
-
-                }
-            });
-
-
-        } else if (thumbnail != null && thumbnail.contains(".jpg") && url.contains(".gif") ||
-                thumbnail != null && thumbnail.contains(".jpg") && url.contains(".gifv") ||
-                thumbnail != null && thumbnail.contains(".jpg") && url.contains(".gfy") ||
-                thumbnail != null && thumbnail.contains(".jpg") && url.contains(".gfycat") ||
-
-                thumbnail != null && thumbnail.contains(".png") && url.contains(".gif") ||
-                thumbnail != null && thumbnail.contains(".png") && url.contains(".gifv") ||
-                thumbnail != null && thumbnail.contains(".png") && url.contains(".gfy") ||
-                thumbnail != null && thumbnail.contains(".png") && url.contains(".gfycat")){
-
-
-            Glide.with(context).load(thumbnail).asBitmap().into(holder.mPostImage);
-            holder.mPostThumbnailLink.setVisibility(View.VISIBLE);
-            holder.mPostThumbnailLink.setText("[Gif]\n" + domainUrl);
+            holder.mPlaceholder.setVisibility(View.VISIBLE);
+            holder.mLinkDomain.setText("[Gif] " + domain);
 
             holder.mPostImage.setOnClickListener(new View.OnClickListener() {
 
@@ -157,247 +160,244 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             });
 
 
-        }else if (thumbnail != null && thumbnail.contains("nsfw")){
+            holder.mPlaceholder.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Intent intent = new Intent(context, GifActivity.class);
+
+                    Bundle bundle = new Bundle();
+
+                    bundle.putString("gif", url);
+
+                    intent.putExtras(bundle);
+
+                    context.startActivity(intent);
+
+                }
+            });
+
+
+        } else if (domain.equals("youtube.com") || domain.equals("youtu.be")
+                || domain.equals("m.youtube.com")) {
+
+            Glide.with(context).load(youtube_thumbnail).into(holder.mPostImage);
+
+            holder.mPlaceholder.setVisibility(View.VISIBLE);
+            holder.mLinkDomain.setText("[Video] " + domain);
+
+            holder.mPostImage.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View view) {
+
+                    Intent intent = new Intent(context, YoutubeActivity.class);
+
+                    Bundle bundle = new Bundle();
+
+                    bundle.putString("youtube_link", url);
+
+                    intent.putExtras(bundle);
+                    context.startActivity(intent);
+
+                }
+            });
+
+
+            holder.mPlaceholder.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Intent intent = new Intent(context, YoutubeActivity.class);
+
+                    Bundle bundle = new Bundle();
+
+                    bundle.putString("youtube_link", url);
+
+                    intent.putExtras(bundle);
+
+                    context.startActivity(intent);
+
+                }
+            });
+
+        }
 
 
 
 
-        } else if (thumbnail != null && thumbnail.contains("")){
+        if (domain.contains("imgur") || domain.contains("youtube") ||
+                domain.contains("youtu.be") || url.contains(".gif") || url.contains("gfy")
+                || url.contains(".jpg") || url.equals(jpegImageUrl)){
 
+            if (url.contains("/gallery/") || url.contains("/a/")){
 
-        } else if (thumbnail == null){
+                Glide.with(context).load(thumbnail).into(holder.mPostImage);
 
+                holder.mPlaceholder.setVisibility(View.VISIBLE);
+                holder.mLinkDomain.setText("[Album] " + domain);
 
+                holder.mPostImage.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View view) {
+
+                        Intent intent = new Intent(context, WebActivity.class);
+
+                        Bundle bundle = new Bundle();
+
+                        bundle.putString("web_link", url);
+
+                        intent.putExtras(bundle);
+                        context.startActivity(intent);
+
+                    }
+                });
+
+                holder.mPlaceholder.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Intent intent = new Intent(context, WebActivity.class);
+
+                        Bundle bundle = new Bundle();
+
+                        bundle.putString("web_link", url);
+
+                        intent.putExtras(bundle);
+
+                        context.startActivity(intent);
+
+                    }
+                });
+
+            }
 
         } else {
 
-            holder.mPostThumbnailLink.setVisibility(View.GONE);
+            holder.mPlaceholder.setVisibility(View.VISIBLE);
+            holder.mLinkDomain.setText("[Link] " + domain);
+
+            holder.mPlaceholder.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Intent intent = new Intent(context, WebActivity.class);
+
+                    Bundle bundle = new Bundle();
+
+                    bundle.putString("web_link", url);
+
+                    intent.putExtras(bundle);
+
+                    context.startActivity(intent);
+
+                }
+            });
 
         }
+
+
+//        if (url.contains("/gallery/")) {
+//
+//            Glide.with(context).load(thumbnail).asBitmap().into(holder.mPostImage);
+//
+//            holder.mPostThumbnailLink.setVisibility(View.VISIBLE);
+//            holder.mPostThumbnailLink.setText("[Album] " + domain);
+//
+//            holder.mPostThumbnailLink.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//
+//                    Intent intent = new Intent(context, GifActivity.class);
+//
+//                    Bundle bundle = new Bundle();
+//
+//                    bundle.putString("gif", url);
+//
+//                    intent.putExtras(bundle);
+//
+//                    context.startActivity(intent);
+//
+//                }
+//            });
+//
+//        }
 
         holder.mMainContent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(context, "Layout Clicked", Toast.LENGTH_SHORT).show();
 
-                if (domain.contains("self")) {
-
-                    Intent intent = new Intent(context, DetailedSelfPostActivity.class);
-
-                    Bundle bundle = new Bundle();
-
-                    bundle.putString("selftext_html", selftext_html);
-                    bundle.putString("title", title);
-                    bundle.putString("author", author);
-                    bundle.putString("subreddit", subreddit);
-                    bundle.putString("domain", domain);
-                    bundle.putInt("post_score", postScore);
-                    bundle.putInt("comments", comments);
-                    bundle.putString("permalink", permalink);
-                    bundle.putInt("time", hour);
-
-                    intent.putExtras(bundle);
-                    context.startActivity(intent);
-
-                } else {
-
-                    Intent intent = new Intent(context, DetailedPostActivity.class);
-
-                    Bundle bundle = new Bundle();
-
-                    bundle.putString("url", url);
-                    bundle.putString("title", title);
-                    bundle.putString("author", author);
-                    bundle.putString("subreddit", subreddit);
-                    bundle.putString("domain", domain);
-                    bundle.putInt("post_score", postScore);
-                    bundle.putInt("comments", comments);
-                    bundle.putString("permalink", permalink);
-                    bundle.putInt("time", hour);
-
-
-                    intent.putExtras(bundle);
-                    context.startActivity(intent);
-
-                }
-            }
-        });
-
-        if (url.contains("youtube") || url.contains("youtu.be")) {
-
-            if (holder.mPostThumbnailLink.getVisibility() == View.VISIBLE){
-
-                holder.mPlaceholder.setVisibility(View.GONE);
-
-
-            } else {
-
-                holder.mPlaceholder.setVisibility(View.VISIBLE);
-
-
-            }
-
-
-            holder.mLinkDomain.setText("[Youtube] " + domainUrl);
-
-            holder.mLinkDomain.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    Intent intent = new Intent(context, YoutubeActivity.class);
-
-                    Bundle bundle = new Bundle();
-
-                    bundle.putString("youtube_link", url);
-
-                    intent.putExtras(bundle);
-                    context.startActivity(intent);
-
-                }
-            });
-
-        } else if (url.contains("gallery") && url.contains("imgur") && domainUrl.contains("imgur")) {
-
-            if (holder.mPostThumbnailLink.getVisibility() == View.VISIBLE){
-
-                holder.mPlaceholder.setVisibility(View.GONE);
-
-
-            } else {
-
-                holder.mPlaceholder.setVisibility(View.VISIBLE);
-
-
-            }
-            holder.mLinkDomain.setText("[Album] " + domainUrl);
-
-            holder.mLinkDomain.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    Intent intent = new Intent(context, ImageGalleryActivity.class);
-
-                    Bundle bundle = new Bundle();
-
-                    bundle.putString("imgur_album", url);
-
-                    intent.putExtras(bundle);
-                    context.startActivity(intent);
-
-                }
-            });
-
-        } else if (url.contains("imgur.com/a")) {
-
-            if (holder.mPostThumbnailLink.getVisibility() == View.VISIBLE){
-
-                holder.mPlaceholder.setVisibility(View.GONE);
-
-
-            } else {
-
-                holder.mPlaceholder.setVisibility(View.VISIBLE);
-
-
-            }
-            holder.mLinkDomain.setText("[Album] " + domainUrl);
-
-            holder.mLinkDomain.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View view) {
-
-                    Intent intent = new Intent(context, WebActivity.class);
-
-                    Bundle bundle = new Bundle();
-
-                    bundle.putString("web_link", url);
-
-                    intent.putExtras(bundle);
-                    context.startActivity(intent);
-
-                }
-            });
-
-
-        } else if (url.contains(".gif") || url.contains(".gifv") || url.contains("gfy") ||
-                url.contains("gfycat")) {
-
-            if (holder.mPostThumbnailLink.getVisibility() == View.VISIBLE){
-
-                holder.mPlaceholder.setVisibility(View.GONE);
-
-
-            } else {
-
-                holder.mPlaceholder.setVisibility(View.VISIBLE);
-
-
-            }
-            holder.mLinkDomain.setText("[Gif] " + domainUrl);
-
-            holder.mLinkDomain.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    Intent intent = new Intent(context, GifActivity.class);
-
-                    Bundle bundle = new Bundle();
-
-                    bundle.putString("gif", url);
-
-                    intent.putExtras(bundle);
-                    context.startActivity(intent);
-
-                }
-            });
-
-        } else if (!url.contains("imgur") && !url.contains("gallery") &&
-                !url.contains("gif") &&
-                !url.contains("gifv") &&
-                !url.contains("gfy") &&
-                !url.contains("gfycat") &&
-                !url.contains("gallery") &&
-                !url.contains("youtube") &&
-                !url.contains("youtu.be") &&
-                !domainUrl.contains("imgur") &&
-                !domainUrl.contains("youtube") &&
-                !domainUrl.contains("youtu.be") &&
-                !domainUrl.contains("gfycat")) {
-
-            if (holder.mPostThumbnailLink.getVisibility() == View.VISIBLE){
-
-                holder.mPlaceholder.setVisibility(View.GONE);
-
-
-            } else {
-
-                holder.mPlaceholder.setVisibility(View.VISIBLE);
-
-
-            }
-            holder.mLinkDomain.setText("[Link] " + domainUrl);
-
-            holder.mLinkDomain.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    Intent intent = new Intent(context, WebActivity.class);
-
-                    Bundle bundle = new Bundle();
-
-                    bundle.putString("web_link", url);
-
-                    intent.putExtras(bundle);
-                    context.startActivity(intent);
-                }
-            });
-
-        } else {
-
-                holder.mPlaceholder.setVisibility(View.GONE);
-
-        }
+                                                   @Override
+                                                   public void onClick(View view) {
+
+                                                       Toast.makeText(context, "Layout Clicked", Toast.LENGTH_SHORT).show();
+
+                                                       if (domain.contains("self")) {
+
+                                                           Intent intent = new Intent(context, DetailedSelfPostActivity.class);
+
+                                                           Bundle bundle = new Bundle();
+
+                                                           bundle.putString("selftext_html", selftext_html);
+                                                           bundle.putString("title", title);
+                                                           bundle.putString("author", author);
+                                                           bundle.putString("subreddit", subreddit);
+                                                           bundle.putString("domain", domain);
+                                                           bundle.putInt("post_score", postScore);
+                                                           bundle.putInt("comments", comments);
+                                                           bundle.putString("permalink", permalink);
+                                                           bundle.putInt("time", hour);
+
+                                                           intent.putExtras(bundle);
+                                                           context.startActivity(intent);
+
+                                                       } else {
+
+                                                           Intent intent = new Intent(context, DetailedPostActivity.class);
+
+                                                           Bundle bundle = new Bundle();
+
+                                                           bundle.putString("url", url);
+                                                           bundle.putString("title", title);
+                                                           bundle.putString("author", author);
+                                                           bundle.putString("subreddit", subreddit);
+                                                           bundle.putString("domain", domain);
+                                                           bundle.putInt("post_score", postScore);
+                                                           bundle.putInt("comments", comments);
+                                                           bundle.putString("permalink", permalink);
+                                                           bundle.putInt("time", hour);
+
+                                                           intent.putExtras(bundle);
+                                                           context.startActivity(intent);
+
+                                                       }
+                                                   }
+                                               }
+
+        );
+
+
+        //        if (url.contains("//imgur.com/gallery/")){
+//
+//            Glide.with(context).load(jpegImageUrl).asBitmap().into(holder.mPostImage);
+//
+//            holder.mPostImage.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//
+//                    Intent intent = new Intent(context, WebActivity.class);
+//
+//                    Bundle bundle = new Bundle();
+//
+//                    bundle.putString("web_link", url);
+//
+//                    intent.putExtras(bundle);
+//
+//                    context.startActivity(intent);
+//
+//                }
+//            });
+//
+//        }
 
         holder.mPostTitle.setText(redditPost.getTitle());
         holder.mAuthor.setText(redditPost.getAuthor());
@@ -405,6 +405,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.mDomain.setText(redditPost.getDomain());
         holder.mPostScore.setText(redditPost.getScore() + " points");
         holder.mComments.setText(redditPost.getComments() + " comments");
+
 
     }
 

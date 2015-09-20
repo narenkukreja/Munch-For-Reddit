@@ -190,6 +190,8 @@ public class AllFragment extends Fragment {
                             post.setUrl(mImageUrl);
 
                         }
+
+
                         post.setAuthor(author);
                         post.setSubreddit(subreddit);
                         post.setDomain(domain);

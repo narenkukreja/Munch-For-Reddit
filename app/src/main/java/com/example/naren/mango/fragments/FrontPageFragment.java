@@ -49,12 +49,9 @@ public class FrontPageFragment extends Fragment {
     private RecyclerViewAdapter adapter;
     private ArrayList<RedditPost> redditPostArrayList = new ArrayList<>();
     private RedditPost post;
-    private String after;
     private SwipeRefreshLayout mSwipeRefreshLayout;
-
-
-
     private LinearLayoutManager mLayoutManager;
+    private String newAfter;
 
     private int previousTotal = 0;
     private boolean loading = true;
@@ -122,6 +119,8 @@ public class FrontPageFragment extends Fragment {
             }
         });
 
+
+
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
@@ -141,7 +140,8 @@ public class FrontPageFragment extends Fragment {
                         <= (firstVisibleItem + visibleThreshold)) {
                     // End has been reached
                     // Do something
-                    getMoreRedditPost(post.getAfter());
+                    getMoreRedditPost(newAfter);
+
                     loading = true;
                 }
             }
@@ -169,14 +169,23 @@ public class FrontPageFragment extends Fragment {
                         String title = childrenArray.getJSONObject(i).getJSONObject("data").getString("title");
                         String url = childrenArray.getJSONObject(i).getJSONObject("data").getString("url");
                         String thumbnail = childrenArray.getJSONObject(i).getJSONObject("data").getString("thumbnail");
-                        after = response.getJSONObject("data").getString("after");
-
-                        String jpegImageUrl = url + ".jpg";
-                        String pngImageUrl = url + ".png";
+                        String after = response.getJSONObject("data").getString("after");
+                        newAfter = after;
 
                         String author = childrenArray.getJSONObject(i).getJSONObject("data").getString("author");
                         String subreddit = childrenArray.getJSONObject(i).getJSONObject("data").getString("subreddit");
                         String domain = childrenArray.getJSONObject(i).getJSONObject("data").getString("domain");
+
+                        if (domain.equals("youtube.com") || domain.equals("youtu.be")
+                                || domain.equals("m.youtube.com")) {
+
+                            String youtube_thumbnail = childrenArray.getJSONObject(i).getJSONObject("data").getJSONObject("media").getJSONObject("oembed").getString("thumbnail_url");
+                            post.setYoutubeThumbnail(youtube_thumbnail);
+
+
+                        }
+
+
                         String permalink = childrenArray.getJSONObject(i).getJSONObject("data").getString("permalink");
                         String selfttext_html = childrenArray.getJSONObject(i).getJSONObject("data").getString("selftext_html");
 
@@ -184,34 +193,11 @@ public class FrontPageFragment extends Fragment {
                         int comments = childrenArray.getJSONObject(i).getJSONObject("data").getInt("num_comments");
                         long time = childrenArray.getJSONObject(i).getJSONObject("data").getInt("created_utc");
 
-                        post.setUrl(url);
                         post.setThumbnail(thumbnail);
 
-                        if (domain.contains("imgur") && url.contains("gallery") && url.contains("imgur")) {
-                            post.setUrl(url);
-                        }else if(url.contains("imgur.com/a")){
-                            post.setUrl(url);
-                        }else{
-                            if (domain.equals("imgur.com") && !url.contains("gallery")) {
+                        post.setUrl(url);
 
-                                if (!url.equals(jpegImageUrl)) {
-
-                                    post.setUrl(jpegImageUrl);
-
-                                } else {
-
-                                    post.setUrl(pngImageUrl);
-                                }
-                            }
-                        }
-
-                        if (domain.equals("m.imgur.com")) {
-                            String mImageUrl = childrenArray.getJSONObject(i).getJSONObject("data").getJSONObject("media").getJSONObject("oembed").getString("thumbnail_url");
-                            post.setUrl(mImageUrl);
-
-                        }
-
-                        post.setAfter(after);
+                        post.setAfter(newAfter);
                         post.setTitle(title);
                         post.setPermalink(permalink);
                         post.setAuthor(author);
@@ -226,10 +212,9 @@ public class FrontPageFragment extends Fragment {
 
                     }
 
-                    adapter.notifyItemRangeChanged(0, redditPostArrayList.size());
+                    adapter.notifyItemRangeChanged(0 ,redditPostArrayList.size());
 
-
-                    Toast.makeText(getContext(), "Permalink: " + post.getPermalink(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "After: " + newAfter, Toast.LENGTH_SHORT).show();
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -266,19 +251,26 @@ public class FrontPageFragment extends Fragment {
 
                         post = new RedditPost();
 
-                        post = new RedditPost();
-
                         String title = childrenArray.getJSONObject(i).getJSONObject("data").getString("title");
                         String url = childrenArray.getJSONObject(i).getJSONObject("data").getString("url");
                         String thumbnail = childrenArray.getJSONObject(i).getJSONObject("data").getString("thumbnail");
                         String after = response.getJSONObject("data").getString("after");
 
-                        String jpegImageUrl = url + ".jpg";
-                        String pngImageUrl = url + ".png";
+                        newAfter = after;
 
                         String author = childrenArray.getJSONObject(i).getJSONObject("data").getString("author");
                         String subreddit = childrenArray.getJSONObject(i).getJSONObject("data").getString("subreddit");
                         String domain = childrenArray.getJSONObject(i).getJSONObject("data").getString("domain");
+
+                        if (domain.equals("youtube.com") || domain.equals("youtu.be")
+                                || domain.equals("m.youtube.com")) {
+
+                            String youtube_thumbnail = childrenArray.getJSONObject(i).getJSONObject("data").getJSONObject("media").getJSONObject("oembed").getString("thumbnail_url");
+                            post.setYoutubeThumbnail(youtube_thumbnail);
+
+
+                        }
+
                         String permalink = childrenArray.getJSONObject(i).getJSONObject("data").getString("permalink");
                         String selfttext_html = childrenArray.getJSONObject(i).getJSONObject("data").getString("selftext_html");
 
@@ -286,34 +278,11 @@ public class FrontPageFragment extends Fragment {
                         int comments = childrenArray.getJSONObject(i).getJSONObject("data").getInt("num_comments");
                         long time = childrenArray.getJSONObject(i).getJSONObject("data").getInt("created_utc");
 
-                        post.setUrl(url);
                         post.setThumbnail(thumbnail);
 
-                        if (domain.contains("imgur") && url.contains("gallery") && url.contains("imgur")) {
-                            post.setUrl(url);
-                        }else if(url.contains("imgur.com/a")){
-                            post.setUrl(url);
-                        }else{
-                            if (domain.equals("imgur.com") && !url.contains("gallery")) {
+                        post.setUrl(url);
 
-                                if (!url.equals(jpegImageUrl)) {
-
-                                    post.setUrl(jpegImageUrl);
-
-                                } else {
-
-                                    post.setUrl(pngImageUrl);
-                                }
-                            }
-                        }
-
-                        if (domain.equals("m.imgur.com")) {
-                            String mImageUrl = childrenArray.getJSONObject(i).getJSONObject("data").getJSONObject("media").getJSONObject("oembed").getString("thumbnail_url");
-                            post.setUrl(mImageUrl);
-
-                        }
-
-                        post.setAfter(after);
+                        post.setAfter(newAfter);
                         post.setTitle(title);
                         post.setPermalink(permalink);
                         post.setAuthor(author);
@@ -327,9 +296,9 @@ public class FrontPageFragment extends Fragment {
                         redditPostArrayList.add(post);
 
                     }
+                    adapter.notifyItemRangeChanged(0 ,redditPostArrayList.size());
 
-                    adapter.notifyItemRangeChanged(0, redditPostArrayList.size());
-                    Toast.makeText(getContext(), "Permalink: " + post.getPermalink(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "After: " + newAfter, Toast.LENGTH_SHORT).show();
 
 
                 } catch (JSONException e) {
