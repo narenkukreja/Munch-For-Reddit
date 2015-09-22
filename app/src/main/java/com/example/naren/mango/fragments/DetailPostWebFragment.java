@@ -79,15 +79,23 @@ public class DetailPostWebFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_detail_post_web, container, false);
 
-
         mToolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
 
         final AppCompatActivity activity = (AppCompatActivity) getActivity();
 
-        mToolbar.inflateMenu(R.menu.web_fragment_menu);
-
         mToolbar.setTitle("Back");
         mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
+
+
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                activity.finish();
+
+
+            }
+        });
 
         bundle = getActivity().getIntent().getExtras();
         url = bundle.getString("url");
@@ -107,105 +115,79 @@ public class DetailPostWebFragment extends Fragment {
         // Load the initial URL
         mWebView.loadUrl(url);
 
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        mToolbar.inflateMenu(R.menu.menu_web);
+
+        mToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
-            public void onClick(View view) {
+            public boolean onMenuItemClick(MenuItem item) {
 
-                activity.finish();
+                switch (item.getItemId()) {
 
+                    case R.id.action_goBack:
 
-            }
-        });
+                        if (mWebView.canGoBack()) {
 
-        mToolbar.findViewById(R.id.action_goBack).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+                            mWebView.goBack();
+                        }
 
-                if (mWebView.canGoBack()) {
+                        return true;
 
-                    mWebView.goBack();
+                    case R.id.action_goForward:
+
+                        if (mWebView.canGoForward()) {
+
+                            mWebView.goForward();
+                        }
+
+                        return true;
+
+                    case R.id.action_refresh:
+
+                        mWebView.loadUrl(url);
+
+                        return true;
+
+                    case R.id.action_share:
+
+                        Intent intent = new Intent(Intent.ACTION_SEND);
+                        Uri comicUri = Uri.parse(url);
+                        intent.setType("text/plain");
+                        intent.putExtra(Intent.EXTRA_TEXT, comicUri.toString());
+                        startActivity(Intent.createChooser(intent, "Share with"));
+
+                        return true;
+
+                    case R.id.action_readability:
+
+                        mWebView.loadUrl("http://www.readability.com/m?url=" + url);
+                        item.setChecked(true);
+
+                        return true;
+
+                    case R.id.action_desktop:
+
+                        String ua = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0";
+                        mWebView.getSettings().setUserAgentString(ua);
+                        mWebView.loadUrl(url);
+                        item.setChecked(true);
+
+                        return true;
+
+                    case R.id.action_browser:
+
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW);
+                        browserIntent.setData(Uri.parse(url));
+                        startActivity(browserIntent);
+
+                        return true;
+
+                    default:
+                        break;
                 }
 
-
+                return true;
             }
         });
-
-        mToolbar.findViewById(R.id.action_goForward).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if (mWebView.canGoForward()) {
-
-                    mWebView.goForward();
-                }
-
-            }
-        });
-
-//        mToolbar.findViewById(R.id.action_ref).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(getContext(), "Refreh", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
-//
-//        mToolbar.findViewById(R.id.action_refresh).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                mWebView.loadUrl(url);
-//
-//
-//            }
-//        });
-//
-//        mToolbar.findViewById(R.id.action_share).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                Intent intent = new Intent(Intent.ACTION_SEND);
-//                Uri comicUri = Uri.parse(url);
-//                intent.setType("text/plain");
-//                intent.putExtra(Intent.EXTRA_TEXT, comicUri.toString());
-//                startActivity(Intent.createChooser(intent, "Share with"));
-//
-//            }
-//        });
-
-//        mToolbar.findViewById(R.id.action_readability).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                mWebView.loadUrl("http://www.readability.com/m?url=" + url);
-//
-//            }
-//        });
-//
-//        mToolbar.findViewById(R.id.action_desktop).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                String ua = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0";
-//                mWebView.getSettings().setUserAgentString(ua);
-//                mWebView.loadUrl(url);
-//
-//            }
-//        });
-//
-//        mToolbar.findViewById(R.id.action_browser).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                Intent intent = new Intent(Intent.ACTION_VIEW);
-//                intent.setData(Uri.parse(url));
-//                startActivity(intent);
-//
-//            }
-//        });
-
-
-
 
 
         // Inflate the layout for this fragment
@@ -213,26 +195,29 @@ public class DetailPostWebFragment extends Fragment {
 
     }
 
-    private void handleToolbarActions(Toolbar mToolbar) {
-
-
-
-
-    }
-
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.web_fragment_menu, menu);
+        inflater.inflate(R.menu.menu_web, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        return false;
-
-
-    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//
+//        switch (item.getItemId()){
+//
+//            case R.id.action_ref:
+//                Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
+//                return true;
+//
+//        }
+//
+//
+//
+//        return false;
+//
+//
+//    }
 
     // Manages the behavior when URLs are loaded
     private class MyBrowser extends WebViewClient {

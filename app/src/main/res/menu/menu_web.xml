@@ -37,7 +37,6 @@
         android:title="@string/action_readability"
         app:showAsAction="never"
         android:checkable="true"
-        android:checked="false"
         />
     <item
         android:id="@+id/action_desktop"
@@ -45,7 +44,6 @@
         android:title="@string/action_desktop"
         app:showAsAction="never"
         android:checkable="true"
-        android:checked="false"
 
         />
     <item

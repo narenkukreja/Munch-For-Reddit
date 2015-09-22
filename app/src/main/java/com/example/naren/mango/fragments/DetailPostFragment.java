@@ -189,7 +189,6 @@ public class DetailPostFragment extends Fragment {
         permalink = bundle.getString("permalink");
         time = bundle.getInt("time");
 
-
     }
 
     private void attachBundleData() {
