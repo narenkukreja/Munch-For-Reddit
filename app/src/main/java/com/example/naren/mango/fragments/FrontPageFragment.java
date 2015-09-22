@@ -8,6 +8,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
@@ -51,6 +54,7 @@ public class FrontPageFragment extends Fragment {
     private RedditPost post;
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private LinearLayoutManager mLayoutManager;
+    private ProgressBar mProgressbar;
     private String newAfter;
 
     private int previousTotal = 0;
@@ -87,6 +91,7 @@ public class FrontPageFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+            setHasOptionsMenu(true);
 
         }
     }
@@ -97,6 +102,8 @@ public class FrontPageFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_frontpage, container, false);
+
+        mProgressbar = (ProgressBar) rootView.findViewById(R.id.progressbar);
 
         mRequestQueue = MySingleton.getInstance(getActivity()).getRequestQueue();
 
@@ -119,7 +126,6 @@ public class FrontPageFragment extends Fragment {
 
             }
         });
-
 
 
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -215,8 +221,8 @@ public class FrontPageFragment extends Fragment {
 
                     adapter.notifyItemRangeChanged(0 ,redditPostArrayList.size());
                     mSwipeRefreshLayout.setRefreshing(false);
+                    mProgressbar.setVisibility(View.GONE);
                     mRecyclerView.setVisibility(View.VISIBLE);
-
 
 
                     Toast.makeText(getContext(), "After: " + newAfter, Toast.LENGTH_SHORT).show();
@@ -321,5 +327,36 @@ public class FrontPageFragment extends Fragment {
 
         return redditPostArrayList;
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+
+            case R.id.action_refresh:
+                mRecyclerView.setVisibility(View.GONE);
+                mProgressbar.setVisibility(View.VISIBLE);
+                getRedditPost();
+
+                Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
+                return true;
+
+
+            case R.id.action_sort:
+                Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
+                return true;
+
+            case R.id.action_settings:
+                Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
+                return true;
+
+            default:
+                break;
+
+            }
+
+
+        return super.onOptionsItemSelected(item);
     }
 }

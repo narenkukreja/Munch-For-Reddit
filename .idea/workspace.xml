@@ -36,11 +36,9 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/fragments/DetailPostFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/fragments/DetailPostFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/activities/DetailedPostActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/activities/DetailedPostActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/fragments/FrontPageFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/fragments/FrontPageFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_detail_post.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_detail_post.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_frontpage.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_frontpage.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Mango.iws" />
@@ -62,11 +60,51 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4797891">
-              <caret line="148" column="25" selection-start-line="148" selection-start-column="25" selection-end-line="148" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="150" column="9" selection-start-line="150" selection-start-column="9" selection-end-line="150" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FrontPageFragment.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/fragments/FrontPageFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="3.0158172">
+              <caret line="223" column="32" selection-start-line="223" selection-start-column="32" selection-end-line="223" selection-end-column="32" />
+              <folding>
+                <element signature="e#5737#9132#0" expanded="true" />
+                <element signature="e#9131#9132#0" expanded="true" />
+                <element signature="e#9134#9365#0" expanded="true" />
+                <element signature="e#9364#9365#0" expanded="true" />
+                <element signature="e#9750#12960#0" expanded="true" />
+                <element signature="e#12959#12960#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fragment_frontpage.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_frontpage.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.3448277">
+              <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="menu_main.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_main.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -1611,8 +1649,9 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/activities/DetailedPostActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_detail_post.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/fragments/DetailPostFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/fragments/FrontPageFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_frontpage.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/fragments/FrontPageFragment.java" />
       </list>
     </option>
   </component>
@@ -2049,7 +2088,13 @@
       <option name="project" value="LOCAL" />
       <updated>1442945242350</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added Swipe down to refresh functionality&#10;&#10;&#10;">
+      <created>1442946728282</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1442946728282</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2131,7 +2176,8 @@
     <MESSAGE value="Added actions (share, refresh, etc...) in WebView Activity" />
     <MESSAGE value="Partially added actions to web fragment" />
     <MESSAGE value="Completed toolbar action in web fragment for detailed posts" />
-    <option name="LAST_COMMIT_MESSAGE" value="Completed toolbar action in web fragment for detailed posts" />
+    <MESSAGE value="Added Swipe down to refresh functionality&#10;&#10;&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Swipe down to refresh functionality&#10;&#10;&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2622,17 +2668,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_frontpage.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.793103">
-          <caret line="8" column="45" selection-start-line="5" selection-start-column="3" selection-end-line="8" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_detail_post.xml">
       <provider editor-type-id="android-designer">
         <state />
@@ -2656,32 +2691,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/fragments/FrontPageFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="323" column="5" selection-start-line="323" selection-start-column="5" selection-end-line="323" selection-end-column="5" />
-          <folding>
-            <element signature="e#3956#4232#0" expanded="true" />
-            <element signature="e#4231#4232#0" expanded="true" />
-            <element signature="e#8833#9064#0" expanded="true" />
-            <element signature="e#9063#9064#0" expanded="true" />
-          </folding>
+          <caret line="150" column="9" selection-start-line="150" selection-start-column="9" selection-end-line="150" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_main.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29525483">
-          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_frontpage.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4797891">
-          <caret line="148" column="25" selection-start-line="148" selection-start-column="25" selection-end-line="148" selection-end-column="25" />
+        <state vertical-scroll-proportion="-4.3448277">
+          <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/fragments/FrontPageFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.0158172">
+          <caret line="223" column="32" selection-start-line="223" selection-start-column="32" selection-end-line="223" selection-end-column="32" />
+          <folding>
+            <element signature="e#5737#9132#0" expanded="true" />
+            <element signature="e#9131#9132#0" expanded="true" />
+            <element signature="e#9134#9365#0" expanded="true" />
+            <element signature="e#9364#9365#0" expanded="true" />
+            <element signature="e#9750#12960#0" expanded="true" />
+            <element signature="e#12959#12960#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
