@@ -1,6 +1,8 @@
 package com.example.naren.mango.fragments;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -82,7 +84,38 @@ public class DetailPostWebFragment extends Fragment {
 
         final AppCompatActivity activity = (AppCompatActivity) getActivity();
 
-        mToolbar.inflateMenu(R.menu.menu_web);
+        mToolbar.inflateMenu(R.menu.web_fragment_menu);
+
+        mToolbar.setTitle("Back");
+        mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
+
+        bundle = getActivity().getIntent().getExtras();
+        url = bundle.getString("url");
+
+        mWebView = (WebView) rootView.findViewById(R.id.webView);
+
+        mWebView.getSettings().setLoadsImagesAutomatically(true);
+        mWebView.getSettings().setJavaScriptEnabled(true);
+        mWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+        mWebView.getSettings().setLoadWithOverviewMode(true);
+        mWebView.getSettings().setUseWideViewPort(true);
+        mWebView.getSettings().setBuiltInZoomControls(true);
+        mWebView.getSettings().setSupportZoom(true);
+        mWebView.getSettings().setDomStorageEnabled(true);
+        // Configure the client to use when opening URLs
+        mWebView.setWebViewClient(new MyBrowser());
+        // Load the initial URL
+        mWebView.loadUrl(url);
+
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                activity.finish();
+
+
+            }
+        });
 
         mToolbar.findViewById(R.id.action_goBack).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,7 +134,7 @@ public class DetailPostWebFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                if (mWebView.canGoForward()){
+                if (mWebView.canGoForward()) {
 
                     mWebView.goForward();
                 }
@@ -109,37 +142,70 @@ public class DetailPostWebFragment extends Fragment {
             }
         });
 
-        mToolbar.setTitle("Back");
-        mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
+//        mToolbar.findViewById(R.id.action_ref).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(getContext(), "Refreh", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+//
+//        mToolbar.findViewById(R.id.action_refresh).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                mWebView.loadUrl(url);
+//
+//
+//            }
+//        });
+//
+//        mToolbar.findViewById(R.id.action_share).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                Intent intent = new Intent(Intent.ACTION_SEND);
+//                Uri comicUri = Uri.parse(url);
+//                intent.setType("text/plain");
+//                intent.putExtra(Intent.EXTRA_TEXT, comicUri.toString());
+//                startActivity(Intent.createChooser(intent, "Share with"));
+//
+//            }
+//        });
 
-                activity.finish();
+//        mToolbar.findViewById(R.id.action_readability).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                mWebView.loadUrl("http://www.readability.com/m?url=" + url);
+//
+//            }
+//        });
+//
+//        mToolbar.findViewById(R.id.action_desktop).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                String ua = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0";
+//                mWebView.getSettings().setUserAgentString(ua);
+//                mWebView.loadUrl(url);
+//
+//            }
+//        });
+//
+//        mToolbar.findViewById(R.id.action_browser).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                Intent intent = new Intent(Intent.ACTION_VIEW);
+//                intent.setData(Uri.parse(url));
+//                startActivity(intent);
+//
+//            }
+//        });
 
 
-            }
-        });
 
-        bundle = getActivity().getIntent().getExtras();
-
-        url = bundle.getString("url");
-
-        mWebView = (WebView) rootView.findViewById(R.id.webView);
-
-        mWebView.getSettings().setLoadsImagesAutomatically(true);
-        mWebView.getSettings().setJavaScriptEnabled(true);
-        mWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-        mWebView.getSettings().setLoadWithOverviewMode(true);
-        mWebView.getSettings().setUseWideViewPort(true);
-        mWebView.getSettings().setBuiltInZoomControls(true);
-        mWebView.getSettings().setSupportZoom(true);
-        mWebView.getSettings().setDomStorageEnabled(true);
-        // Configure the client to use when opening URLs
-        mWebView.setWebViewClient(new MyBrowser());
-        // Load the initial URL
-        mWebView.loadUrl(url);
 
 
         // Inflate the layout for this fragment
@@ -147,16 +213,23 @@ public class DetailPostWebFragment extends Fragment {
 
     }
 
+    private void handleToolbarActions(Toolbar mToolbar) {
+
+
+
+
+    }
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_web, menu);
+        inflater.inflate(R.menu.web_fragment_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        return super.onOptionsItemSelected(item);
+        return false;
 
 
     }

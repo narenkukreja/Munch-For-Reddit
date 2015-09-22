@@ -116,15 +116,9 @@ public class DetailedPostActivity extends AppCompatActivity{
 
         switch (id){
 
-            case R.id.action_settings:
-                return true;
-
             case android.R.id.home:
                 finish();
                 return true;
-            default:
-                break;
-
 
         }
 
