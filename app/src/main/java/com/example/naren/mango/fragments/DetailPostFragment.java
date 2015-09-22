@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
@@ -71,6 +72,7 @@ public class DetailPostFragment extends Fragment {
     private ViewPager mViewPager;
     private LinearLayout mLinearLayout;
     private Toolbar mToolbar;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
 
     private String id;
@@ -166,6 +168,20 @@ public class DetailPostFragment extends Fragment {
                 mListView.getItemAtPosition(i);
 
                 Toast.makeText(getContext(), "Post: " + i, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        mSwipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh_layout);
+
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                new CommentProcessor().fetchComments();
+                mSwipeRefreshLayout.setRefreshing(true);
+                mListView.setVisibility(View.GONE);
+
 
             }
         });
@@ -354,6 +370,8 @@ public class DetailPostFragment extends Fragment {
                         JSONArray childrenArray = response.getJSONObject(1).getJSONObject("data").getJSONArray("children");
                         process(commentArrayList, childrenArray, 0);
                         adapter.notifyDataSetChanged();
+                        mSwipeRefreshLayout.setRefreshing(false);
+                        mListView.setVisibility(View.VISIBLE);
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -365,6 +383,7 @@ public class DetailPostFragment extends Fragment {
 
                 }
             });
+
 
             MySingleton.getInstance(getActivity()).addToRequestQueue(jsonArrayRequest);
 

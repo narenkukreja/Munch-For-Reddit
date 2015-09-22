@@ -114,7 +114,8 @@ public class FrontPageFragment extends Fragment {
             public void onRefresh() {
 
                 getRedditPost();
-                mSwipeRefreshLayout.setRefreshing(false);
+                mSwipeRefreshLayout.setRefreshing(true);
+                mRecyclerView.setVisibility(View.GONE);
 
             }
         });
@@ -213,6 +214,10 @@ public class FrontPageFragment extends Fragment {
                     }
 
                     adapter.notifyItemRangeChanged(0 ,redditPostArrayList.size());
+                    mSwipeRefreshLayout.setRefreshing(false);
+                    mRecyclerView.setVisibility(View.VISIBLE);
+
+
 
                     Toast.makeText(getContext(), "After: " + newAfter, Toast.LENGTH_SHORT).show();
 
