@@ -20,6 +20,12 @@
     <string name="title_activity_detailed_self_post">DetailedSelfPostActivity</string>
     <string name="action_sort">Sort</string>
     <string name="action_refresh">Refresh</string>
+    <string name="action_share">Share</string>
+    <string name="action_readability">Readability</string>
+    <string name="action_desktop">Request Desktop</string>
+    <string name="action_broswer">Open In Browser</string>
+
+
     <string name="action_reply">Reply</string>
     <string name="action_goBack">Back</string>
     <string name="action_goForward">Forward</string>

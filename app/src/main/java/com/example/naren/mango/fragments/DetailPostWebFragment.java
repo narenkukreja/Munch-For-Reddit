@@ -84,6 +84,31 @@ public class DetailPostWebFragment extends Fragment {
 
         mToolbar.inflateMenu(R.menu.menu_web);
 
+        mToolbar.findViewById(R.id.action_goBack).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (mWebView.canGoBack()) {
+
+                    mWebView.goBack();
+                }
+
+
+            }
+        });
+
+        mToolbar.findViewById(R.id.action_goForward).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (mWebView.canGoForward()){
+
+                    mWebView.goForward();
+                }
+
+            }
+        });
+
         mToolbar.setTitle("Back");
         mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
 
@@ -116,6 +141,7 @@ public class DetailPostWebFragment extends Fragment {
         // Load the initial URL
         mWebView.loadUrl(url);
 
+
         // Inflate the layout for this fragment
         return rootView;
 
@@ -129,7 +155,10 @@ public class DetailPostWebFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         return super.onOptionsItemSelected(item);
+
+
     }
 
     // Manages the behavior when URLs are loaded

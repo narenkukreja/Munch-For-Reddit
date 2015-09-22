@@ -7,14 +7,17 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -36,7 +39,6 @@ import java.util.TreeSet;
 import uk.co.senab.photoview.PhotoViewAttacher;
 
 public class CommentAdapter extends ArrayAdapter<Comment> {
-
 
     ArrayList<Comment> comments = new ArrayList<>();
 
@@ -94,6 +96,7 @@ public class CommentAdapter extends ArrayAdapter<Comment> {
         holder.comment_author.setText(comment.getComment_author());
         holder.comment_score.setText(comment.getComment_score() + "points");
         holder.comment_body.setText(Html.fromHtml(comment.getComment_body()));
+        holder.comment_body.setMovementMethod(LinkMovementMethod.getInstance());
         holder.comment_time.setText(hour + " hrs ago");
 
 

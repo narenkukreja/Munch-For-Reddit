@@ -18,10 +18,41 @@
         android:icon="@drawable/ic_keyboard_arrow_right_white_24dp"/>
 
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_refresh"
         android:orderInCategory="300"
-        android:title="@string/action_settings"
-        app:showAsAction="ifRoom"
+        android:title="@string/action_refresh"
+        app:showAsAction="never"
         android:icon="@drawable/ic_more_vert_white_24dp"/>
+
+    <item
+        android:id="@+id/action_share"
+        android:orderInCategory="400"
+        android:title="@string/action_share"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/action_readability"
+        android:orderInCategory="500"
+        android:title="@string/action_readability"
+        app:showAsAction="never"
+        android:checkable="true"
+        android:checked="false"
+        />
+    <item
+        android:id="@+id/action_desktop"
+        android:orderInCategory="600"
+        android:title="@string/action_desktop"
+        app:showAsAction="never"
+        android:checkable="true"
+        android:checked="false"
+
+        />
+    <item
+        android:id="@+id/action_browser"
+        android:orderInCategory="700"
+        android:title="@string/action_broswer"
+        app:showAsAction="never"
+        />
 
 </menu>

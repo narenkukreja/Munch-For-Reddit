@@ -1,6 +1,7 @@
 package com.example.naren.mango.activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -19,7 +20,8 @@ public class WebActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
     private WebView mWebView;
-    private String imageUrl;
+    private String webUrl;
+    private static final String READABILITY_PREFIX = "http://www.readability.com/m?url=";
 
 
     @Override
@@ -37,7 +39,7 @@ public class WebActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Back");
 
         Bundle bundle = getIntent().getExtras();
-        imageUrl = bundle.getString("web_link");
+        webUrl = bundle.getString("web_link");
 
         mWebView = (WebView) findViewById(R.id.webView);
 
@@ -53,7 +55,7 @@ public class WebActivity extends AppCompatActivity {
         // Configure the client to use when opening URLs
         mWebView.setWebViewClient(new MyBrowser());
         // Load the initial URL
-        mWebView.loadUrl(imageUrl);
+        mWebView.loadUrl(webUrl);
 
     }
 
@@ -78,17 +80,81 @@ public class WebActivity extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        Intent intent;
+
+        switch (item.getItemId()) {
+
+            case android.R.id.home:
+                finish();
+                return true;
+
+
+            case R.id.action_goBack:
+
+                if (mWebView.canGoBack()) {
+                    mWebView.goBack();
+                }
+
+                return true;
+
+            case R.id.action_goForward:
+
+                if (mWebView.canGoForward()) {
+
+                    mWebView.goForward();
+                }
+
+                return true;
+
+
+            case R.id.action_refresh:
+
+                mWebView.loadUrl(webUrl);
+
+                return true;
+
+            case R.id.action_share:
+
+                intent = new Intent(Intent.ACTION_SEND);
+                Uri comicUri = Uri.parse(webUrl);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_TEXT, comicUri.toString());
+                startActivity(Intent.createChooser(intent, "Share with"));
+
+                return true;
+
+            case R.id.action_readability:
+
+                mWebView.loadUrl(READABILITY_PREFIX + webUrl);
+                item.setChecked(true);
+
+                return true;
+
+            case R.id.action_desktop:
+
+
+                String ua = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0";
+                mWebView.getSettings().setUserAgentString(ua);
+                mWebView.loadUrl(webUrl);
+                item.setChecked(true);
+
+
+                return true;
+
+            case R.id.action_browser:
+
+                intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(webUrl));
+                startActivity(intent);
+
+                return true;
+
+            default:
+                break;
+
         }
 
-        if (id == android.R.id.home) {
-            finish();
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }

@@ -3,7 +3,7 @@ package com.example.naren.mango.model;
 
 public class RedditPost {
 
-    public static final String FRONT_PAGE_URL = "https://www.reddit.com/r/all.json?raw_json=1";
+    public static final String FRONT_PAGE_URL = "https://www.reddit.com/r/news.json?raw_json=1";
     public static final String ALL_PAGE_URL = "https://www.reddit.com/r/all.json?raw_json=1";
     public static final String ART_PAGE_URL = "https://www.reddit.com/r/art.json?raw_json=1";
     public static final String ASKREDDIT_PAGE_URL = "https://www.reddit.com/r/askreddit.json?raw_json=1";

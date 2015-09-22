@@ -12,10 +12,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -35,6 +39,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -51,8 +56,12 @@ public class DetailPostFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     Bundle bundle;
+
     private CommentAdapter adapter;
+
+
     private ListView mListView;
+
     private RequestQueue mRequestQueue;
     private ArrayList<Comment> commentArrayList = new ArrayList<>();
     private CardView mCardView;
@@ -147,95 +156,25 @@ public class DetailPostFragment extends Fragment {
         mCardView.setPreventCornerOverlap(false);
 
         mListView.addHeaderView(header);
-        adapter = new CommentAdapter(getContext(), new CommentProcessor().fetchComments());
+        adapter =  new CommentAdapter(getContext(), new CommentProcessor().fetchComments());
         mListView.setAdapter(adapter);
 
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                mListView.getItemAtPosition(i);
+
+                Toast.makeText(getContext(), "Post: " + i, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
         attachBundleData();
-
-//        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.comment_listView);
-//        adapter = new CommentRecyclerViewAdapter(getContext(), getComments());
-//        mRecyclerView.setAdapter(adapter);
-//
-//        mLayoutManager = new LinearLayoutManager(getContext());
-//        mRecyclerView.setLayoutManager(mLayoutManager);
-
 
         // Inflate the layout for this fragment
         return rootView;
     }
-
-
-
-
-//    private ArrayList<Comment> getComments() {
-//
-//        final JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, Comment.BASE_COMMENT_URL + permalink + ".json?",
-//                new Response.Listener<JSONArray>() {
-//
-//                    @Override
-//                    public void onResponse(JSONArray response) {
-//
-//
-//                        for (int i = 0; i < response.length(); i++) {
-//
-//
-//                            try {
-//
-//                                JSONArray childrenArray = response.getJSONObject(i).getJSONObject("data").getJSONArray("children");
-//
-//                                String comment_author = null;
-//                                int comment_score;
-//                                String comment_body = null;
-//                                String replies = null;
-//
-//
-//                                for (int j = 0; j < childrenArray.length(); j++) {
-//
-//                                    comment = new Comment();
-//
-//                                    comment_author = childrenArray.getJSONObject(i).getJSONObject("data").getString("author");
-//                                    comment_score = childrenArray.getJSONObject(i).getJSONObject("data").getInt("score");
-//                                    comment_body = childrenArray.getJSONObject(i).getJSONObject("data").getString("body_html");
-//                                    replies = childrenArray.getJSONObject(i).getJSONObject("data").getString("replies");
-//
-//                                    comment.setComment_author(comment_author);
-//                                    comment.setComment_score(comment_score);
-//                                    comment.setComment_body(comment_body);
-//
-//                                    commentArrayList.add(comment);
-//
-//                                }
-//
-//                                adapter.notifyDataSetChanged();
-//
-//                                Toast.makeText(getContext(), "Author " + comment.getComment_author() + "\n" +
-//                                                "Score " + comment.getComment_score() + "\n" + "Body " + comment.getComment_body(),
-//                                        Toast.LENGTH_SHORT).show();
-//
-//
-//                            } catch (JSONException e) {
-//                                e.printStackTrace();
-//                            }
-//
-//                        }
-//
-//                    }
-//                }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//
-//                Toast.makeText(getContext(), "Fail " + permalink, Toast.LENGTH_SHORT).show();
-//
-//
-//            }
-//        });
-//
-//
-//        MySingleton.getInstance(getActivity()).addToRequestQueue(jsonArrayRequest);
-//
-//        return commentArrayList;
-//
-//    }
 
     public void initializeBundleData() {
 
@@ -396,11 +335,8 @@ public class DetailPostFragment extends Fragment {
 
     }
 
-
     public class CommentProcessor {
 
-        // This will be the URL of the comments page, suffixed with .json
-        private String url;
 
         public CommentProcessor() {
 
@@ -423,8 +359,6 @@ public class DetailPostFragment extends Fragment {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-
-
                 }
             }, new Response.ErrorListener() {
                 @Override
@@ -446,6 +380,7 @@ public class DetailPostFragment extends Fragment {
                     continue;
                 if (c.getJSONObject(i).optString("kind").equals("t1") == false)
                     continue;
+
                 JSONObject data = c.getJSONObject(i).getJSONObject("data");
                 Comment comment = loadComment(data, level);
 
@@ -487,11 +422,6 @@ public class DetailPostFragment extends Fragment {
                 Log.d("ERROR", "addReplies : " + e);
             }
         }
-
-        // Load the comments as an ArrayList, so that it can be
-        // easily passed to the ArrayAdapter
-
-
     }
 
 }
