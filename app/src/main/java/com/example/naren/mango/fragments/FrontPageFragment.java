@@ -1,9 +1,11 @@
 package com.example.naren.mango.fragments;
 
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
@@ -13,6 +15,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -31,6 +34,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 
 /**
@@ -56,6 +61,7 @@ public class FrontPageFragment extends Fragment {
     private LinearLayoutManager mLayoutManager;
     private ProgressBar mProgressbar;
     private String newAfter;
+    private String subreddit;
 
     private int previousTotal = 0;
     private boolean loading = true;
@@ -108,6 +114,7 @@ public class FrontPageFragment extends Fragment {
         mRequestQueue = MySingleton.getInstance(getActivity()).getRequestQueue();
 
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.all_recyclerview);
+
         adapter = new RecyclerViewAdapter(getActivity(), getRedditPost());
         mRecyclerView.setAdapter(adapter);
 
@@ -160,7 +167,7 @@ public class FrontPageFragment extends Fragment {
     private ArrayList<RedditPost> getRedditPost() {
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                RedditPost.FRONT_PAGE_URL, (String) null, new Response.Listener<JSONObject>() {
+                RedditPost.FRONT_PAGE_URL + RedditPost.JSON_ENDPOINT, (String) null, new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {
@@ -180,7 +187,7 @@ public class FrontPageFragment extends Fragment {
                         newAfter = after;
 
                         String author = childrenArray.getJSONObject(i).getJSONObject("data").getString("author");
-                        String subreddit = childrenArray.getJSONObject(i).getJSONObject("data").getString("subreddit");
+                        subreddit = childrenArray.getJSONObject(i).getJSONObject("data").getString("subreddit");
                         String domain = childrenArray.getJSONObject(i).getJSONObject("data").getString("domain");
 
                         if (domain.equals("youtube.com") || domain.equals("youtu.be")
@@ -219,7 +226,7 @@ public class FrontPageFragment extends Fragment {
 
                     }
 
-                    adapter.notifyItemRangeChanged(0 ,redditPostArrayList.size());
+                    adapter.notifyItemRangeChanged(0, redditPostArrayList.size());
                     mSwipeRefreshLayout.setRefreshing(false);
                     mProgressbar.setVisibility(View.GONE);
                     mRecyclerView.setVisibility(View.VISIBLE);
@@ -249,7 +256,7 @@ public class FrontPageFragment extends Fragment {
     private ArrayList<RedditPost> getMoreRedditPost(String after) {
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                RedditPost.FRONT_PAGE_URL + RedditPost.AFTER_ENDPOINT + after, (String) null, new Response.Listener<JSONObject>() {
+                RedditPost.FRONT_PAGE_URL + RedditPost.JSON_ENDPOINT + RedditPost.AFTER_ENDPOINT + after, (String) null, new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {
@@ -270,7 +277,7 @@ public class FrontPageFragment extends Fragment {
                         newAfter = after;
 
                         String author = childrenArray.getJSONObject(i).getJSONObject("data").getString("author");
-                        String subreddit = childrenArray.getJSONObject(i).getJSONObject("data").getString("subreddit");
+                        subreddit = childrenArray.getJSONObject(i).getJSONObject("data").getString("subreddit");
                         String domain = childrenArray.getJSONObject(i).getJSONObject("data").getString("domain");
 
                         if (domain.equals("youtube.com") || domain.equals("youtu.be")
@@ -307,7 +314,7 @@ public class FrontPageFragment extends Fragment {
                         redditPostArrayList.add(post);
 
                     }
-                    adapter.notifyItemRangeChanged(0 ,redditPostArrayList.size());
+                    adapter.notifyItemRangeChanged(0, redditPostArrayList.size());
 
                     Toast.makeText(getContext(), "After: " + newAfter, Toast.LENGTH_SHORT).show();
 
@@ -332,20 +339,177 @@ public class FrontPageFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
 
             case R.id.action_refresh:
                 mRecyclerView.setVisibility(View.GONE);
                 mProgressbar.setVisibility(View.VISIBLE);
                 getRedditPost();
+                mLayoutManager.scrollToPosition(0);
 
-                Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
                 return true;
 
-
-            case R.id.action_sort:
-                Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
-                return true;
+//            case R.id.action_sort:
+//
+//                final ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<String>(
+//                        getContext(), android.R.layout.select_dialog_singlechoice
+//                );
+//
+//                stringArrayAdapter.add("Hot");
+//                stringArrayAdapter.add("New");
+//                stringArrayAdapter.add("Rising");
+//                stringArrayAdapter.add("Top • Hour");
+//                stringArrayAdapter.add("Top • Day");
+//                stringArrayAdapter.add("Top • Week");
+//                stringArrayAdapter.add("Top • Month");
+//                stringArrayAdapter.add("Top • Year");
+//                stringArrayAdapter.add("Top • All Time");
+//                stringArrayAdapter.add("Controversial • Hour");
+//                stringArrayAdapter.add("Controversial • Day");
+//                stringArrayAdapter.add("Controversial • Week");
+//                stringArrayAdapter.add("Controversial • Month");
+//                stringArrayAdapter.add("Controversial • Year");
+//                stringArrayAdapter.add("Controversial • All Time");
+//
+//                final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+//                builder.setTitle("Sort By:");
+//
+//                builder.setAdapter(stringArrayAdapter, new DialogInterface.OnClickListener() {
+//
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//
+//                        String sortItem = stringArrayAdapter.getItem(i);
+//
+//                        switch (sortItem){
+//
+//                            case "New":
+//
+////                                mRecyclerView.setVisibility(View.GONE);
+////                                mProgressbar.setVisibility(View.VISIBLE);
+//
+////                                Collections.sort(getSortedRedditPost(), new Comparator<RedditPost>() {
+////                                    @Override
+////                                    public int compare(RedditPost redditPost, RedditPost t1) {
+////                                        return  ;
+////                                    }
+////                                });
+//
+//                                adapter = new RecyclerViewAdapter(getActivity(), getSortedRedditPost());
+//                                mRecyclerView.setAdapter(adapter);
+//                                mLayoutManager = new LinearLayoutManager(getActivity());
+//                                mRecyclerView.setLayoutManager(mLayoutManager);                                dialogInterface.dismiss();
+//
+//                                dialogInterface.dismiss();
+//
+//                                Toast.makeText(getContext(), "New", Toast.LENGTH_SHORT).show();
+//                                break;
+//
+//
+//                        }
+//
+//
+//                    }
+//                });
+//
+//                builder.setSingleChoiceItems(stringArrayAdapter, 0, new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//
+//                        String sortItem = stringArrayAdapter.getItem(i);
+//
+//                        switch (sortItem) {
+//
+//                            case "Hot":
+//
+//                                mRecyclerView.setVisibility(View.GONE);
+//                                mProgressbar.setVisibility(View.VISIBLE);
+//                                mLayoutManager.scrollToPosition(0);
+//                                getRedditPost();
+//                                dialogInterface.dismiss();
+//
+//                                break;
+//
+//                            case "New":
+//
+////                                mRecyclerView.setVisibility(View.GONE);
+////                                mProgressbar.setVisibility(View.VISIBLE);
+//
+//                                mRecyclerView.setAdapter(new RecyclerViewAdapter(getActivity(), getSortedRedditPost()));
+//                                dialogInterface.dismiss();
+//
+//                                Toast.makeText(getContext(), "New", Toast.LENGTH_SHORT).show();
+//                                break;
+//
+//                            case "Rising":
+//                                Toast.makeText(getContext(), "Hot", Toast.LENGTH_SHORT).show();
+//                                break;
+//
+//                            case "Top • Hour":
+//                                Toast.makeText(getContext(), "Hot", Toast.LENGTH_SHORT).show();
+//                                break;
+//
+//                            case "Top • Day":
+//                                Toast.makeText(getContext(), "Hot", Toast.LENGTH_SHORT).show();
+//                                break;
+//
+//                            case "Top • Week":
+//                                Toast.makeText(getContext(), "Hot", Toast.LENGTH_SHORT).show();
+//                                break;
+//
+//                            case "Top • Month":
+//                                Toast.makeText(getContext(), "Hot", Toast.LENGTH_SHORT).show();
+//                                break;
+//
+//                            case "Top • Year":
+//                                Toast.makeText(getContext(), "Hot", Toast.LENGTH_SHORT).show();
+//                                break;
+//
+//                            case "Top • All Time":
+//                                Toast.makeText(getContext(), "Hot", Toast.LENGTH_SHORT).show();
+//                                break;
+//
+//                            case "Controversial • Hour":
+//                                Toast.makeText(getContext(), "Hot", Toast.LENGTH_SHORT).show();
+//                                break;
+//
+//                            case "Controversial • Day":
+//                                Toast.makeText(getContext(), "Hot", Toast.LENGTH_SHORT).show();
+//                                break;
+//
+//                            case "Controversial • Month":
+//                                Toast.makeText(getContext(), "Hot", Toast.LENGTH_SHORT).show();
+//                                break;
+//
+//                            case "Controversial • Week":
+//                                Toast.makeText(getContext(), "Hot", Toast.LENGTH_SHORT).show();
+//                                break;
+//
+//                            case "Controversial • Year":
+//                                Toast.makeText(getContext(), "Hot", Toast.LENGTH_SHORT).show();
+//                                break;
+//
+//                            case "Controversial • All Time":
+//                                Toast.makeText(getContext(), "Hot", Toast.LENGTH_SHORT).show();
+//                                break;
+//
+//
+//                            default:
+//                                break;
+//
+//                        }
+//
+//
+//                    }
+//                });
+//
+//                builder.create();
+//                builder.show();
+//
+//
+//
+//                Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
+//                return true;
 
             case R.id.action_settings:
                 Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
@@ -354,9 +518,188 @@ public class FrontPageFragment extends Fragment {
             default:
                 break;
 
-            }
+        }
 
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private ArrayList<RedditPost> getSortedRedditPost() {
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                "https://www.reddit.com/r/soccer/.json?", (String) null, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+
+                try {
+
+                    JSONArray childrenArray = response.getJSONObject("data").getJSONArray("children");
+
+                    for (int i = 0; i < childrenArray.length(); i++) {
+
+                        post = new RedditPost();
+
+                        String title = childrenArray.getJSONObject(i).getJSONObject("data").getString("title");
+                        String url = childrenArray.getJSONObject(i).getJSONObject("data").getString("url");
+                        String thumbnail = childrenArray.getJSONObject(i).getJSONObject("data").getString("thumbnail");
+                        String after = response.getJSONObject("data").getString("after");
+                        newAfter = after;
+
+                        String author = childrenArray.getJSONObject(i).getJSONObject("data").getString("author");
+                        subreddit = childrenArray.getJSONObject(i).getJSONObject("data").getString("subreddit");
+                        String domain = childrenArray.getJSONObject(i).getJSONObject("data").getString("domain");
+
+                        if (domain.equals("youtube.com") || domain.equals("youtu.be")
+                                || domain.equals("m.youtube.com")) {
+
+                            String youtube_thumbnail = childrenArray.getJSONObject(i).getJSONObject("data").getJSONObject("media").getJSONObject("oembed").getString("thumbnail_url");
+                            post.setYoutubeThumbnail(youtube_thumbnail);
+
+
+                        }
+
+
+                        String permalink = childrenArray.getJSONObject(i).getJSONObject("data").getString("permalink");
+                        String selfttext_html = childrenArray.getJSONObject(i).getJSONObject("data").getString("selftext_html");
+
+                        int score = childrenArray.getJSONObject(i).getJSONObject("data").getInt("score");
+                        int comments = childrenArray.getJSONObject(i).getJSONObject("data").getInt("num_comments");
+                        long time = childrenArray.getJSONObject(i).getJSONObject("data").getInt("created_utc");
+
+                        post.setThumbnail(thumbnail);
+
+                        post.setUrl(url);
+
+                        post.setAfter(newAfter);
+                        post.setTitle(title);
+                        post.setPermalink(permalink);
+                        post.setAuthor(author);
+                        post.setSubreddit(subreddit);
+                        post.setDomain(domain);
+                        post.setTime(time);
+                        post.setScore(score);
+                        post.setComments(comments);
+                        post.setSelftext_html(selfttext_html);
+
+                        redditPostArrayList.add(post);
+
+
+                    }
+
+                    adapter.notifyItemRangeChanged(0, redditPostArrayList.size());
+//                    mSwipeRefreshLayout.setRefreshing(false);
+//                    mProgressbar.setVisibility(View.GONE);
+//                    mRecyclerView.setVisibility(View.VISIBLE);
+
+
+                    Toast.makeText(getContext(), "After: " + newAfter, Toast.LENGTH_SHORT).show();
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Toast.makeText(getContext(), "Error: " + error, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        MySingleton.getInstance(getActivity()).addToRequestQueue(jsonObjectRequest);
+
+        return redditPostArrayList;
+
+    }
+
+    private ArrayList<RedditPost> getSortedByTimeRedditPost(String sortType, String timeFrame) {
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                RedditPost.FRONT_PAGE_URL, (String) null, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+
+                try {
+
+                    JSONArray childrenArray = response.getJSONObject("data").getJSONArray("children");
+
+                    for (int i = 0; i < childrenArray.length(); i++) {
+
+                        post = new RedditPost();
+
+                        String title = childrenArray.getJSONObject(i).getJSONObject("data").getString("title");
+                        String url = childrenArray.getJSONObject(i).getJSONObject("data").getString("url");
+                        String thumbnail = childrenArray.getJSONObject(i).getJSONObject("data").getString("thumbnail");
+                        String after = response.getJSONObject("data").getString("after");
+                        newAfter = after;
+
+                        String author = childrenArray.getJSONObject(i).getJSONObject("data").getString("author");
+                        subreddit = childrenArray.getJSONObject(i).getJSONObject("data").getString("subreddit");
+                        String domain = childrenArray.getJSONObject(i).getJSONObject("data").getString("domain");
+
+                        if (domain.equals("youtube.com") || domain.equals("youtu.be")
+                                || domain.equals("m.youtube.com")) {
+
+                            String youtube_thumbnail = childrenArray.getJSONObject(i).getJSONObject("data").getJSONObject("media").getJSONObject("oembed").getString("thumbnail_url");
+                            post.setYoutubeThumbnail(youtube_thumbnail);
+
+
+                        }
+
+
+                        String permalink = childrenArray.getJSONObject(i).getJSONObject("data").getString("permalink");
+                        String selfttext_html = childrenArray.getJSONObject(i).getJSONObject("data").getString("selftext_html");
+
+                        int score = childrenArray.getJSONObject(i).getJSONObject("data").getInt("score");
+                        int comments = childrenArray.getJSONObject(i).getJSONObject("data").getInt("num_comments");
+                        long time = childrenArray.getJSONObject(i).getJSONObject("data").getInt("created_utc");
+
+                        post.setThumbnail(thumbnail);
+
+                        post.setUrl(url);
+
+                        post.setAfter(newAfter);
+                        post.setTitle(title);
+                        post.setPermalink(permalink);
+                        post.setAuthor(author);
+                        post.setSubreddit(subreddit);
+                        post.setDomain(domain);
+                        post.setTime(time);
+                        post.setScore(score);
+                        post.setComments(comments);
+                        post.setSelftext_html(selfttext_html);
+
+                        redditPostArrayList.add(post);
+
+                    }
+
+                    adapter.notifyItemRangeChanged(0, redditPostArrayList.size());
+                    mSwipeRefreshLayout.setRefreshing(false);
+                    mProgressbar.setVisibility(View.GONE);
+                    mRecyclerView.setVisibility(View.VISIBLE);
+
+
+                    Toast.makeText(getContext(), "After: " + newAfter, Toast.LENGTH_SHORT).show();
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Toast.makeText(getContext(), "Error: " + error, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        MySingleton.getInstance(getActivity()).addToRequestQueue(jsonObjectRequest);
+
+        return redditPostArrayList;
+
     }
 }

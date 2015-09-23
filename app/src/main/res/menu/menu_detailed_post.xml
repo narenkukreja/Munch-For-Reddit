@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.naren.mango.activities.DetailedPostActivity">
 
-    <item
-        android:id="@+id/action_reply"
-        android:icon="@drawable/ic_reply_white_24dp"
-        android:orderInCategory="100"
-        android:title="@string/action_reply"
-        app:showAsAction="ifRoom" />
+    <!--<item-->
+        <!--android:id="@+id/action_reply"-->
+        <!--android:icon="@drawable/ic_reply_white_24dp"-->
+        <!--android:orderInCategory="100"-->
+        <!--android:title="@string/action_reply"-->
+        <!--app:showAsAction="ifRoom" />-->
 
     <item
         android:id="@+id/action_refresh"
@@ -17,11 +17,11 @@
         android:title="@string/action_refresh"
         app:showAsAction="ifRoom" />
 
-    <item
-        android:id="@+id/action_sort"
-        android:icon="@drawable/ic_sort_white_24dp"
-        android:orderInCategory="300"
-        android:title="@string/action_sort"
-        app:showAsAction="ifRoom" />
+    <!--<item-->
+        <!--android:id="@+id/action_sort"-->
+        <!--android:icon="@drawable/ic_sort_white_24dp"-->
+        <!--android:orderInCategory="300"-->
+        <!--android:title="@string/action_sort"-->
+        <!--app:showAsAction="ifRoom" />-->
 
 </menu>

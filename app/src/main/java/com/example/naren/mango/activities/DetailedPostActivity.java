@@ -115,21 +115,22 @@ public class DetailedPostActivity extends AppCompatActivity{
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        switch (id){
+        switch (id) {
 
             case android.R.id.home:
                 finish();
                 return true;
-
-            case R.id.action_reply:
-                Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
-                return true;
-
-            case R.id.action_refresh:
-                Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
-                return true;
-
         }
+
+//            case R.id.action_reply:
+//                Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
+//                return true;
+//
+//            case R.id.action_refresh:
+//                Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+//                return true;
+//
+//        }
 
         return super.onOptionsItemSelected(item);
     }

@@ -3,18 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
 
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="300"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+    <!--<item-->
+        <!--android:id="@+id/action_settings"-->
+        <!--android:orderInCategory="300"-->
+        <!--android:title="@string/action_settings"-->
+        <!--app:showAsAction="never" />-->
 
-    <item
-        android:id="@+id/action_sort"
-        android:orderInCategory="200"
-        android:title="@string/action_sort"
-        app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_sort_white_24dp"/>
+    <!--&lt;!&ndash;<item&ndash;&gt;-->
+        <!--&lt;!&ndash;android:id="@+id/action_sort"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:orderInCategory="200"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:title="@string/action_sort"&ndash;&gt;-->
+        <!--&lt;!&ndash;app:showAsAction="ifRoom"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:icon="@drawable/ic_sort_white_24dp"/>&ndash;&gt;-->
 
     <item
         android:id="@+id/action_refresh"
