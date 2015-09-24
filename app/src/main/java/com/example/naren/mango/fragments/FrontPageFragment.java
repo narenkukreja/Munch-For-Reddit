@@ -511,9 +511,9 @@ public class FrontPageFragment extends Fragment {
 //                Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
 //                return true;
 
-            case R.id.action_settings:
-                Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
-                return true;
+//            case R.id.action_settings:
+//                Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
+//                return true;
 
             default:
                 break;
@@ -524,182 +524,182 @@ public class FrontPageFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-    private ArrayList<RedditPost> getSortedRedditPost() {
-
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                "https://www.reddit.com/r/soccer/.json?", (String) null, new Response.Listener<JSONObject>() {
-
-            @Override
-            public void onResponse(JSONObject response) {
-
-                try {
-
-                    JSONArray childrenArray = response.getJSONObject("data").getJSONArray("children");
-
-                    for (int i = 0; i < childrenArray.length(); i++) {
-
-                        post = new RedditPost();
-
-                        String title = childrenArray.getJSONObject(i).getJSONObject("data").getString("title");
-                        String url = childrenArray.getJSONObject(i).getJSONObject("data").getString("url");
-                        String thumbnail = childrenArray.getJSONObject(i).getJSONObject("data").getString("thumbnail");
-                        String after = response.getJSONObject("data").getString("after");
-                        newAfter = after;
-
-                        String author = childrenArray.getJSONObject(i).getJSONObject("data").getString("author");
-                        subreddit = childrenArray.getJSONObject(i).getJSONObject("data").getString("subreddit");
-                        String domain = childrenArray.getJSONObject(i).getJSONObject("data").getString("domain");
-
-                        if (domain.equals("youtube.com") || domain.equals("youtu.be")
-                                || domain.equals("m.youtube.com")) {
-
-                            String youtube_thumbnail = childrenArray.getJSONObject(i).getJSONObject("data").getJSONObject("media").getJSONObject("oembed").getString("thumbnail_url");
-                            post.setYoutubeThumbnail(youtube_thumbnail);
-
-
-                        }
-
-
-                        String permalink = childrenArray.getJSONObject(i).getJSONObject("data").getString("permalink");
-                        String selfttext_html = childrenArray.getJSONObject(i).getJSONObject("data").getString("selftext_html");
-
-                        int score = childrenArray.getJSONObject(i).getJSONObject("data").getInt("score");
-                        int comments = childrenArray.getJSONObject(i).getJSONObject("data").getInt("num_comments");
-                        long time = childrenArray.getJSONObject(i).getJSONObject("data").getInt("created_utc");
-
-                        post.setThumbnail(thumbnail);
-
-                        post.setUrl(url);
-
-                        post.setAfter(newAfter);
-                        post.setTitle(title);
-                        post.setPermalink(permalink);
-                        post.setAuthor(author);
-                        post.setSubreddit(subreddit);
-                        post.setDomain(domain);
-                        post.setTime(time);
-                        post.setScore(score);
-                        post.setComments(comments);
-                        post.setSelftext_html(selfttext_html);
-
-                        redditPostArrayList.add(post);
-
-
-                    }
-
-                    adapter.notifyItemRangeChanged(0, redditPostArrayList.size());
+//    private ArrayList<RedditPost> getSortedRedditPost() {
+//
+//        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+//                "https://www.reddit.com/r/soccer/.json?", (String) null, new Response.Listener<JSONObject>() {
+//
+//            @Override
+//            public void onResponse(JSONObject response) {
+//
+//                try {
+//
+//                    JSONArray childrenArray = response.getJSONObject("data").getJSONArray("children");
+//
+//                    for (int i = 0; i < childrenArray.length(); i++) {
+//
+//                        post = new RedditPost();
+//
+//                        String title = childrenArray.getJSONObject(i).getJSONObject("data").getString("title");
+//                        String url = childrenArray.getJSONObject(i).getJSONObject("data").getString("url");
+//                        String thumbnail = childrenArray.getJSONObject(i).getJSONObject("data").getString("thumbnail");
+//                        String after = response.getJSONObject("data").getString("after");
+//                        newAfter = after;
+//
+//                        String author = childrenArray.getJSONObject(i).getJSONObject("data").getString("author");
+//                        subreddit = childrenArray.getJSONObject(i).getJSONObject("data").getString("subreddit");
+//                        String domain = childrenArray.getJSONObject(i).getJSONObject("data").getString("domain");
+//
+//                        if (domain.equals("youtube.com") || domain.equals("youtu.be")
+//                                || domain.equals("m.youtube.com")) {
+//
+//                            String youtube_thumbnail = childrenArray.getJSONObject(i).getJSONObject("data").getJSONObject("media").getJSONObject("oembed").getString("thumbnail_url");
+//                            post.setYoutubeThumbnail(youtube_thumbnail);
+//
+//
+//                        }
+//
+//
+//                        String permalink = childrenArray.getJSONObject(i).getJSONObject("data").getString("permalink");
+//                        String selfttext_html = childrenArray.getJSONObject(i).getJSONObject("data").getString("selftext_html");
+//
+//                        int score = childrenArray.getJSONObject(i).getJSONObject("data").getInt("score");
+//                        int comments = childrenArray.getJSONObject(i).getJSONObject("data").getInt("num_comments");
+//                        long time = childrenArray.getJSONObject(i).getJSONObject("data").getInt("created_utc");
+//
+//                        post.setThumbnail(thumbnail);
+//
+//                        post.setUrl(url);
+//
+//                        post.setAfter(newAfter);
+//                        post.setTitle(title);
+//                        post.setPermalink(permalink);
+//                        post.setAuthor(author);
+//                        post.setSubreddit(subreddit);
+//                        post.setDomain(domain);
+//                        post.setTime(time);
+//                        post.setScore(score);
+//                        post.setComments(comments);
+//                        post.setSelftext_html(selfttext_html);
+//
+//                        redditPostArrayList.add(post);
+//
+//
+//                    }
+//
+//                    adapter.notifyItemRangeChanged(0, redditPostArrayList.size());
+////                    mSwipeRefreshLayout.setRefreshing(false);
+////                    mProgressbar.setVisibility(View.GONE);
+////                    mRecyclerView.setVisibility(View.VISIBLE);
+//
+//
+//                    Toast.makeText(getContext(), "After: " + newAfter, Toast.LENGTH_SHORT).show();
+//
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//
+//                Toast.makeText(getContext(), "Error: " + error, Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
+//
+//        MySingleton.getInstance(getActivity()).addToRequestQueue(jsonObjectRequest);
+//
+//        return redditPostArrayList;
+//
+//    }
+//
+//    private ArrayList<RedditPost> getSortedByTimeRedditPost(String sortType, String timeFrame) {
+//
+//        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+//                RedditPost.FRONT_PAGE_URL, (String) null, new Response.Listener<JSONObject>() {
+//
+//            @Override
+//            public void onResponse(JSONObject response) {
+//
+//                try {
+//
+//                    JSONArray childrenArray = response.getJSONObject("data").getJSONArray("children");
+//
+//                    for (int i = 0; i < childrenArray.length(); i++) {
+//
+//                        post = new RedditPost();
+//
+//                        String title = childrenArray.getJSONObject(i).getJSONObject("data").getString("title");
+//                        String url = childrenArray.getJSONObject(i).getJSONObject("data").getString("url");
+//                        String thumbnail = childrenArray.getJSONObject(i).getJSONObject("data").getString("thumbnail");
+//                        String after = response.getJSONObject("data").getString("after");
+//                        newAfter = after;
+//
+//                        String author = childrenArray.getJSONObject(i).getJSONObject("data").getString("author");
+//                        subreddit = childrenArray.getJSONObject(i).getJSONObject("data").getString("subreddit");
+//                        String domain = childrenArray.getJSONObject(i).getJSONObject("data").getString("domain");
+//
+//                        if (domain.equals("youtube.com") || domain.equals("youtu.be")
+//                                || domain.equals("m.youtube.com")) {
+//
+//                            String youtube_thumbnail = childrenArray.getJSONObject(i).getJSONObject("data").getJSONObject("media").getJSONObject("oembed").getString("thumbnail_url");
+//                            post.setYoutubeThumbnail(youtube_thumbnail);
+//
+//
+//                        }
+//
+//
+//                        String permalink = childrenArray.getJSONObject(i).getJSONObject("data").getString("permalink");
+//                        String selfttext_html = childrenArray.getJSONObject(i).getJSONObject("data").getString("selftext_html");
+//
+//                        int score = childrenArray.getJSONObject(i).getJSONObject("data").getInt("score");
+//                        int comments = childrenArray.getJSONObject(i).getJSONObject("data").getInt("num_comments");
+//                        long time = childrenArray.getJSONObject(i).getJSONObject("data").getInt("created_utc");
+//
+//                        post.setThumbnail(thumbnail);
+//
+//                        post.setUrl(url);
+//
+//                        post.setAfter(newAfter);
+//                        post.setTitle(title);
+//                        post.setPermalink(permalink);
+//                        post.setAuthor(author);
+//                        post.setSubreddit(subreddit);
+//                        post.setDomain(domain);
+//                        post.setTime(time);
+//                        post.setScore(score);
+//                        post.setComments(comments);
+//                        post.setSelftext_html(selfttext_html);
+//
+//                        redditPostArrayList.add(post);
+//
+//                    }
+//
+//                    adapter.notifyItemRangeChanged(0, redditPostArrayList.size());
 //                    mSwipeRefreshLayout.setRefreshing(false);
 //                    mProgressbar.setVisibility(View.GONE);
 //                    mRecyclerView.setVisibility(View.VISIBLE);
-
-
-                    Toast.makeText(getContext(), "After: " + newAfter, Toast.LENGTH_SHORT).show();
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-                Toast.makeText(getContext(), "Error: " + error, Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-        MySingleton.getInstance(getActivity()).addToRequestQueue(jsonObjectRequest);
-
-        return redditPostArrayList;
-
-    }
-
-    private ArrayList<RedditPost> getSortedByTimeRedditPost(String sortType, String timeFrame) {
-
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                RedditPost.FRONT_PAGE_URL, (String) null, new Response.Listener<JSONObject>() {
-
-            @Override
-            public void onResponse(JSONObject response) {
-
-                try {
-
-                    JSONArray childrenArray = response.getJSONObject("data").getJSONArray("children");
-
-                    for (int i = 0; i < childrenArray.length(); i++) {
-
-                        post = new RedditPost();
-
-                        String title = childrenArray.getJSONObject(i).getJSONObject("data").getString("title");
-                        String url = childrenArray.getJSONObject(i).getJSONObject("data").getString("url");
-                        String thumbnail = childrenArray.getJSONObject(i).getJSONObject("data").getString("thumbnail");
-                        String after = response.getJSONObject("data").getString("after");
-                        newAfter = after;
-
-                        String author = childrenArray.getJSONObject(i).getJSONObject("data").getString("author");
-                        subreddit = childrenArray.getJSONObject(i).getJSONObject("data").getString("subreddit");
-                        String domain = childrenArray.getJSONObject(i).getJSONObject("data").getString("domain");
-
-                        if (domain.equals("youtube.com") || domain.equals("youtu.be")
-                                || domain.equals("m.youtube.com")) {
-
-                            String youtube_thumbnail = childrenArray.getJSONObject(i).getJSONObject("data").getJSONObject("media").getJSONObject("oembed").getString("thumbnail_url");
-                            post.setYoutubeThumbnail(youtube_thumbnail);
-
-
-                        }
-
-
-                        String permalink = childrenArray.getJSONObject(i).getJSONObject("data").getString("permalink");
-                        String selfttext_html = childrenArray.getJSONObject(i).getJSONObject("data").getString("selftext_html");
-
-                        int score = childrenArray.getJSONObject(i).getJSONObject("data").getInt("score");
-                        int comments = childrenArray.getJSONObject(i).getJSONObject("data").getInt("num_comments");
-                        long time = childrenArray.getJSONObject(i).getJSONObject("data").getInt("created_utc");
-
-                        post.setThumbnail(thumbnail);
-
-                        post.setUrl(url);
-
-                        post.setAfter(newAfter);
-                        post.setTitle(title);
-                        post.setPermalink(permalink);
-                        post.setAuthor(author);
-                        post.setSubreddit(subreddit);
-                        post.setDomain(domain);
-                        post.setTime(time);
-                        post.setScore(score);
-                        post.setComments(comments);
-                        post.setSelftext_html(selfttext_html);
-
-                        redditPostArrayList.add(post);
-
-                    }
-
-                    adapter.notifyItemRangeChanged(0, redditPostArrayList.size());
-                    mSwipeRefreshLayout.setRefreshing(false);
-                    mProgressbar.setVisibility(View.GONE);
-                    mRecyclerView.setVisibility(View.VISIBLE);
-
-
-                    Toast.makeText(getContext(), "After: " + newAfter, Toast.LENGTH_SHORT).show();
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-                Toast.makeText(getContext(), "Error: " + error, Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-        MySingleton.getInstance(getActivity()).addToRequestQueue(jsonObjectRequest);
-
-        return redditPostArrayList;
-
-    }
+//
+//
+//                    Toast.makeText(getContext(), "After: " + newAfter, Toast.LENGTH_SHORT).show();
+//
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//
+//                Toast.makeText(getContext(), "Error: " + error, Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
+//
+//        MySingleton.getInstance(getActivity()).addToRequestQueue(jsonObjectRequest);
+//
+//        return redditPostArrayList;
+//
+//    }
 }

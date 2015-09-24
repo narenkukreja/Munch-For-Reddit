@@ -1,30 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <group>
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_profile"
-            android:title="Profile" />
-        <item
-            android:id="@+id/nav_messages"
-            android:title="Messages" />
-        <item
-            android:id="@+id/nav_user"
-            android:title="User" />
-        <item
-            android:id="@+id/nav_Subreddit"
-            android:title="Subreddit" />
-        <item
-            android:id="@+id/nav_settings"
-            android:title="Settings" />
+        <item android:title="Coming Soon">
+
+            <menu >
+
+                <item
+                    android:id="@+id/nav_profile"
+                    android:title="Profile"
+                    android:icon="@drawable/ic_account_circle_white_24dp"
+                    />
+                <item
+                    android:id="@+id/nav_messages"
+                    android:title="Messages"
+                    android:icon="@drawable/ic_mail_white_24dp"/>
+                <item
+                    android:id="@+id/nav_user"
+                    android:title="User"
+                    android:icon="@drawable/ic_supervisor_account_white_24dp"/>
+                <item
+                    android:id="@+id/nav_Subreddit"
+                    android:title="Subreddit"
+                    android:icon="@drawable/ic_bookmark_white_24dp"/>
+                <item
+                    android:id="@+id/nav_settings"
+                    android:title="Settings"
+                    android:icon="@drawable/ic_settings_white_24dp"/>
+
+            </menu>
+
+
+        </item>
+
 
     </group>
 
     <group android:checkableBehavior="single">
 
         <item android:title="Subreddits">
-
 
             <menu>
                 <item

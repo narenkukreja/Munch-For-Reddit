@@ -1,6 +1,7 @@
 package com.example.naren.mango.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
@@ -25,6 +26,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.naren.mango.R;
 import com.example.naren.mango.model.Comment;
+import com.example.naren.mango.model.RedditPost;
 import com.example.naren.mango.network.MySingleton;
 
 import org.json.JSONArray;
@@ -41,6 +43,7 @@ import uk.co.senab.photoview.PhotoViewAttacher;
 public class CommentAdapter extends ArrayAdapter<Comment> {
 
     ArrayList<Comment> comments = new ArrayList<>();
+
 
     public CommentAdapter(Context context, ArrayList<Comment> comments) {
         super(context, 0, comments);
@@ -61,11 +64,11 @@ public class CommentAdapter extends ArrayAdapter<Comment> {
 
         Comment comment = getItem(position);
 
-
         final long time = comment.getComment_time();
         Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
         calendar.setTimeZone(TimeZone.getDefault());
         calendar.setTimeInMillis(time * 1000);
+
 
         final int hour = calendar.get(Calendar.HOUR_OF_DAY);
         int minute = calendar.get(Calendar.MINUTE);
@@ -91,8 +94,6 @@ public class CommentAdapter extends ArrayAdapter<Comment> {
 
             holder = (MyViewHolder) convertView.getTag();
         }
-
-
         holder.comment_author.setText(comment.getComment_author());
         holder.comment_score.setText(comment.getComment_score() + "points");
         holder.comment_body.setText(Html.fromHtml(comment.getComment_body()));
@@ -100,47 +101,87 @@ public class CommentAdapter extends ArrayAdapter<Comment> {
         holder.comment_time.setText(hour + " hrs ago");
 
 
-            if (comments.get(position).level == 0) {
+//        if (comments.get(position).level == 0 && OP.equals(author) && OP.length() == author.length() && OP.contains(author)){
+//            holder.comment_author.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.blue_800));
+//            holder.comment_author.setTextColor(Color.WHITE);
+//
+//        } else if (comments.get(position).level == 1 && OP.equals(author) && OP.length() == author.length() && OP.contains(author)){
+//            holder.comment_author.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.blue_800));
+//            holder.comment_author.setTextColor(Color.WHITE);
+//
+//        }else if (comments.get(position).level == 2 && OP.equals(author) && OP.length() == author.length() && OP.contains(author)){
+//            holder.comment_author.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.blue_800));
+//            holder.comment_author.setTextColor(Color.WHITE);
+//
+//        } else if (comments.get(position).level == 3 && OP.equals(author) && OP.length() == author.length() && OP.contains(author)){
+//            holder.comment_author.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.blue_800));
+//            holder.comment_author.setTextColor(Color.WHITE);
+//
+//        } else if (comments.get(position).level == 4 && OP.equals(author) && OP.length() == author.length() && OP.contains(author)){
+//            holder.comment_author.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.blue_800));
+//            holder.comment_author.setTextColor(Color.WHITE);
+//
+//        } else if (comments.get(position).level == 5 && OP.equals(author) && OP.length() == author.length() && OP.contains(author)){
+//
+//            holder.comment_author.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.blue_800));
+//            holder.comment_author.setTextColor(Color.WHITE);
+//        } else if (comments.get(position).level == 6 && OP.equals(author) && OP.length() == author.length() && OP.contains(author)){
+//            holder.comment_author.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.blue_800));
+//            holder.comment_author.setTextColor(Color.WHITE);
+//
+//        }
 
-                holder.comment_indicator_space.setPadding(0, 0, 0, 0);
-                holder.comment_indicator_color.setVisibility(View.GONE);
+        if (comments.get(position).level == 0) {
 
-            } else if (comments.get(position).level == 1){
+            holder.comment_indicator_space.setPadding(0, 0, 0, 0);
+            holder.comment_indicator_color.setVisibility(View.GONE);
 
-                holder.comment_indicator_space.setPadding(comments.get(position).level * 8, 0, 0, 0);
-                holder.comment_indicator_color.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.blue_800));
-                holder.comment_indicator_color.setVisibility(View.VISIBLE);
-            } else if (comments.get(position).level == 2) {
+        } else if (comments.get(position).level == 1) {
 
-                holder.comment_indicator_space.setPadding(comments.get(position).level * 8, 0, 0, 0);
-                holder.comment_indicator_color.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.purple_800));
-                holder.comment_indicator_color.setVisibility(View.VISIBLE);
-            } else if (comments.get(position).level == 3) {
+            holder.comment_indicator_space.setPadding(comments.get(position).level * 8, 0, 0, 0);
+            holder.comment_indicator_color.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.blue_800));
+            holder.comment_indicator_color.setVisibility(View.VISIBLE);
 
-                holder.comment_indicator_space.setPadding(comments.get(position).level * 8, 0, 0, 0);
-                holder.comment_indicator_color.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.green_800));
-                holder.comment_indicator_color.setVisibility(View.VISIBLE);
-            } else if (comments.get(position).level == 4) {
+        } else if (comments.get(position).level == 2) {
 
-                holder.comment_indicator_space.setPadding(comments.get(position).level * 8, 0, 0, 0);
-                holder.comment_indicator_color.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.orange_800));
-                holder.comment_indicator_color.setVisibility(View.VISIBLE);
-            } else if (comments.get(position).level == 5) {
+            holder.comment_indicator_space.setPadding(comments.get(position).level * 8, 0, 0, 0);
+            holder.comment_indicator_color.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.purple_800));
+            holder.comment_indicator_color.setVisibility(View.VISIBLE);
 
-                holder.comment_indicator_space.setPadding(comments.get(position).level * 8, 0, 0, 0);
-                holder.comment_indicator_color.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.red_800));
-                holder.comment_indicator_color.setVisibility(View.VISIBLE);
-            } else if (comments.get(position).level == 6) {
+        } else if (comments.get(position).level == 3) {
 
-                holder.comment_indicator_space.setPadding(comments.get(position).level * 8, 0, 0, 0);
-                holder.comment_indicator_color.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.yellow_800));
-                holder.comment_indicator_color.setVisibility(View.VISIBLE);
-            }
+
+            holder.comment_indicator_space.setPadding(comments.get(position).level * 8, 0, 0, 0);
+            holder.comment_indicator_color.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.green_800));
+            holder.comment_indicator_color.setVisibility(View.VISIBLE);
+
+        } else if (comments.get(position).level == 4) {
+
+            holder.comment_indicator_space.setPadding(comments.get(position).level * 8, 0, 0, 0);
+            holder.comment_indicator_color.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.orange_800));
+            holder.comment_indicator_color.setVisibility(View.VISIBLE);
+
+        } else if (comments.get(position).level == 5) {
+
+            holder.comment_indicator_space.setPadding(comments.get(position).level * 8, 0, 0, 0);
+            holder.comment_indicator_color.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.red_800));
+            holder.comment_indicator_color.setVisibility(View.VISIBLE);
+
+        } else if (comments.get(position).level == 6) {
+
+            holder.comment_indicator_space.setPadding(comments.get(position).level * 8, 0, 0, 0);
+            holder.comment_indicator_color.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.yellow_800));
+
+            holder.comment_indicator_color.setVisibility(View.VISIBLE);
+        }
+
 
 
         return convertView;
 
+
     }
+
 
     private static class MyViewHolder {
 

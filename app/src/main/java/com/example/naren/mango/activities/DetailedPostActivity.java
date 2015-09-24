@@ -101,12 +101,12 @@ public class DetailedPostActivity extends AppCompatActivity{
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_detailed_post, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_detailed_post, menu);
+//        return true;
+//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -120,6 +120,8 @@ public class DetailedPostActivity extends AppCompatActivity{
             case android.R.id.home:
                 finish();
                 return true;
+
+
         }
 
 //            case R.id.action_reply:

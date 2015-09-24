@@ -18,10 +18,10 @@ public class RedditPost {
 
 
     private String title, url, after, domain, author, subreddit, selftext_html, permalink, thumbnail,
-
     youtubeThumbnail;
     private int score, comments;
     private long time;
+
 
     public String getThumbnail() {
         return thumbnail;

@@ -18,6 +18,8 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.naren.mango.MainActivity;
 import com.example.naren.mango.R;
+import com.hannesdorfmann.swipeback.Position;
+import com.hannesdorfmann.swipeback.SwipeBack;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -40,7 +42,11 @@ public class ExpandedImageView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_expanded_image_view);
+
+        SwipeBack.attach(this, Position.LEFT)
+                .setContentView(R.layout.activity_expanded_image_view)
+                .setSwipeBackView(R.layout.swipeback_custom);
+
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mPhotoView = (PhotoView) findViewById(R.id.expanded_image);
@@ -82,9 +88,6 @@ public class ExpandedImageView extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
         Intent intent;
 

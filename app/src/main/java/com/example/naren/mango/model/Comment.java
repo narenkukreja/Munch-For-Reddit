@@ -9,10 +9,18 @@ import java.util.ArrayList;
 public class Comment {
 
     public static final String BASE_COMMENT_URL = "https://www.reddit.com";
-    private String comment_author, comment_body;
+    private String comment_author, comment_body, post_OP;
     private int comment_score;
     private long comment_time;
     public int level;
+
+    public String getPost_OP() {
+        return post_OP;
+    }
+
+    public void setPost_OP(String post_OP) {
+        this.post_OP = post_OP;
+    }
 
     public String getComment_author() {
         return comment_author;

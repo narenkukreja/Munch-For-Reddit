@@ -66,8 +66,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         final String domain = redditPost.getDomain();
         final String selftext_html = redditPost.getSelftext_html();
         final String permalink = redditPost.getPermalink();
-        String thumbnail = redditPost.getThumbnail();
-        String youtube_thumbnail = redditPost.getYoutubeThumbnail();
+        final String thumbnail = redditPost.getThumbnail();
+        final String youtube_thumbnail = redditPost.getYoutubeThumbnail();
         final int postScore = redditPost.getScore();
         final int comments = redditPost.getComments();
 
@@ -79,7 +79,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         final int hour = calendar.get(Calendar.HOUR_OF_DAY);
         int minute = calendar.get(Calendar.MINUTE);
 
-        holder.mTime.setText(hour + " hrs ago");
+//        holder.mTime.setText(hour + " hrs ago");
 
         Glide.with(context).load(url).into(holder.mPostImage);
 
@@ -224,13 +224,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
 
 
-
-
         if (domain.contains("imgur") || domain.contains("youtube") ||
                 domain.contains("youtu.be") || url.contains(".gif") || url.contains("gfy")
-                || url.contains(".jpg") || url.equals(jpegImageUrl)){
+                || url.contains(".jpg") || url.equals(jpegImageUrl)) {
 
-            if (url.contains("/gallery/") || url.contains("/a/")){
+            if (url.contains("/gallery/") || url.contains("/a/")) {
 
                 Glide.with(context).load(thumbnail).into(holder.mPostImage);
 
@@ -365,6 +363,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                                                            bundle.putInt("comments", comments);
                                                            bundle.putString("permalink", permalink);
                                                            bundle.putInt("time", hour);
+                                                           bundle.putString("thumbnail", thumbnail);
+                                                           bundle.putString("youtube_thumbnail", youtube_thumbnail);
 
                                                            intent.putExtras(bundle);
                                                            context.startActivity(intent);
@@ -432,7 +432,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             mComments = (TextView) itemView.findViewById(R.id.post_comments);
             mSubreddit = (TextView) itemView.findViewById(R.id.post_subreddit);
             mDomain = (TextView) itemView.findViewById(R.id.post_domain);
-            mTime = (TextView) itemView.findViewById(R.id.post_time);
+//            mTime = (TextView) itemView.findViewById(R.id.post_time);
             mAuthor = (TextView) itemView.findViewById(R.id.post_author);
             mLinkDomain = (TextView) itemView.findViewById(R.id.link_domain);
             mMainContent = (LinearLayout) itemView.findViewById(R.id.main_content_linear);

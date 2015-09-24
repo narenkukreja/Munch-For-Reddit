@@ -72,23 +72,22 @@ public class MainActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()) {
 
                     case R.id.nav_profile:
-                        Toast.makeText(MainActivity.this, "Ayy lmao", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Coming Soon", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_messages:
-                        Toast.makeText(MainActivity.this, "Ayy lmao", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Coming Soon", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_user:
-                        Toast.makeText(MainActivity.this, "Ayy lmao", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Coming Soon", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_Subreddit:
-                        Toast.makeText(MainActivity.this, "Ayy lmao", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Coming Soon", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_settings:
-                        Toast.makeText(MainActivity.this, "Ayy lmao", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Coming Soon", Toast.LENGTH_SHORT).show();
                         break;
 
                     case R.id.item_frontpage:
-
                         mViewPager.setCurrentItem(0);
                         break;
 
@@ -146,9 +145,7 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+
 
         return super.onOptionsItemSelected(item);
     }

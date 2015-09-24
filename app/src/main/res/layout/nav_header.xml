@@ -6,13 +6,15 @@
     android:padding="16dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
     android:orientation="vertical"
-    android:gravity="bottom">
+    android:gravity="center">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="[Naren] Reddit App"
-        android:textStyle="bold"
+        android:text="Munch For Reddit"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:textStyle="bold|italic"
         android:textColor="@android:color/white"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
 

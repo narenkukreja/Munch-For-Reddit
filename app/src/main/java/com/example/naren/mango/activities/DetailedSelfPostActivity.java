@@ -3,6 +3,7 @@ package com.example.naren.mango.activities;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -27,8 +29,11 @@ import com.example.naren.mango.adapters.CommentAdapter;
 import com.example.naren.mango.model.Comment;
 import com.example.naren.mango.network.MySingleton;
 import com.example.naren.mango.network.VolleySingleton;
+import com.hannesdorfmann.swipeback.Position;
+import com.hannesdorfmann.swipeback.SwipeBack;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -43,6 +48,8 @@ public class DetailedSelfPostActivity extends AppCompatActivity {
             mDomain, mTime, mSelfttext_html;
     private LinearLayout mSelfTextPlaceholder;
 
+    private Toolbar mToolbar;
+    private ProgressBar mProgressbar;
     private CommentAdapter adapter;
     private ListView mListView;
     private RequestQueue mRequestQueue;
@@ -59,13 +66,25 @@ public class DetailedSelfPostActivity extends AppCompatActivity {
     private String permalink;
     private int time;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detailed_self_post);
+
+        SwipeBack.attach(this, Position.LEFT)
+                .setContentView(R.layout.activity_detailed_self_post)
+                .setSwipeBackView(R.layout.swipeback_custom);
+
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle("Back");
+
+        mProgressbar = (ProgressBar) findViewById(R.id.progressbar);
 
         bundle = getIntent().getExtras();
+
+        String op_author = bundle.getString("author");
 
         initializeBundleData();
 
@@ -82,7 +101,7 @@ public class DetailedSelfPostActivity extends AppCompatActivity {
         mComments = (TextView) header.findViewById(R.id.post_comments);
         mSubreddit = (TextView) header.findViewById(R.id.post_subreddit);
         mDomain = (TextView) header.findViewById(R.id.post_domain);
-        mTime = (TextView) header.findViewById(R.id.post_time);
+//        mTime = (TextView) header.findViewById(R.id.post_time);
         mAuthor = (TextView) header.findViewById(R.id.post_author);
 
         mListView.addHeaderView(header);
@@ -115,7 +134,6 @@ public class DetailedSelfPostActivity extends AppCompatActivity {
         mDomain.setText(domain);
         mPostScore.setText(postScore + " points");
         mComments.setText(comments + " comments");
-        mTime.setText(time + " hrs ago");
 
         if (selftext_html.contains("null")) {
             mSelfTextPlaceholder.setVisibility(View.GONE);
@@ -128,7 +146,6 @@ public class DetailedSelfPostActivity extends AppCompatActivity {
         }
 
     }
-
 
     public class CommentProcessor {
 
@@ -143,15 +160,18 @@ public class DetailedSelfPostActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(JSONArray response) {
 
+
                     try {
-
+                        String post_OP = response.getJSONObject(0).getJSONObject("data").getJSONArray("children").getJSONObject(0).getJSONObject("data").getString("author");
                         JSONArray childrenArray = response.getJSONObject(1).getJSONObject("data").getJSONArray("children");
-                        process(commentArrayList, childrenArray, 0);
+                        process(commentArrayList, childrenArray, 0, post_OP);
                         adapter.notifyDataSetChanged();
-
+                        mListView.setVisibility(View.VISIBLE);
+                        mProgressbar.setVisibility(View.GONE);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+
 
 
                 }
@@ -168,7 +188,7 @@ public class DetailedSelfPostActivity extends AppCompatActivity {
 
         }
 
-        private void process(ArrayList<Comment> comments, JSONArray c, int level) throws Exception {
+        private void process(ArrayList<Comment> comments, JSONArray c, int level, String post_OP) throws Exception {
 
             for (int i = 0; i < c.length(); i++) {
                 if (c.getJSONObject(i).optString("kind") == null)
@@ -176,22 +196,23 @@ public class DetailedSelfPostActivity extends AppCompatActivity {
                 if (!c.getJSONObject(i).optString("kind").equals("t1"))
                     continue;
                 JSONObject data = c.getJSONObject(i).getJSONObject("data");
-                Comment comment = loadComment(data, level);
+                Comment comment = loadComment(data, level, post_OP);
 
                 if (comment.getComment_author() != null) {
                     comments.add(comment);
-                    addReplies(comments, data, level + 1);
+                    addReplies(comments, data, level + 1, post_OP);
                 }
             }
         }
 
         // Load various details about the comment
-        private Comment loadComment(JSONObject data, int level) {
+        private Comment loadComment(JSONObject data, int level, String post_OP) {
             Comment comment = new Comment();
             try {
                 comment.setComment_body(data.getString("body_html"));
                 comment.setComment_author(data.getString("author"));
                 comment.setComment_score(data.getInt("score"));
+                comment.setPost_OP(post_OP);
                 comment.level = level;
             } catch (Exception e) {
                 Log.d("ERROR", "Unable to parse comment : " + e);
@@ -201,7 +222,7 @@ public class DetailedSelfPostActivity extends AppCompatActivity {
 
         // Add replies to the comments
         private void addReplies(ArrayList<Comment> comments,
-                                JSONObject parent, int level) {
+                                JSONObject parent, int level, String post_OP) {
             try {
                 if (parent.get("replies").equals("")) {
                     // This means the comment has no replies
@@ -210,7 +231,7 @@ public class DetailedSelfPostActivity extends AppCompatActivity {
                 JSONArray r = parent.getJSONObject("replies")
                         .getJSONObject("data")
                         .getJSONArray("children");
-                process(comments, r, level);
+                process(comments, r, level, post_OP);
             } catch (Exception e) {
                 Log.d("ERROR", "addReplies : " + e);
             }
@@ -233,10 +254,25 @@ public class DetailedSelfPostActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == android.R.id.home) {
+
+            finish();
+
             return true;
+
         }
+
+        if (id == R.id.action_refresh) {
+
+            mListView.setVisibility(View.GONE);
+            mProgressbar.setVisibility(View.VISIBLE);
+            new CommentProcessor().fetchComments();
+            mListView.smoothScrollToPosition(0,0);
+
+            return true;
+
+        }
+
 
         return super.onOptionsItemSelected(item);
     }

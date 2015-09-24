@@ -11,14 +11,16 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ExpandableListAdapter;
-import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +33,7 @@ import com.bumptech.glide.Glide;
 import com.example.naren.mango.R;
 import com.example.naren.mango.activities.ExpandedImageView;
 import com.example.naren.mango.activities.GifActivity;
+import com.example.naren.mango.activities.WebActivity;
 import com.example.naren.mango.activities.YoutubeActivity;
 import com.example.naren.mango.adapters.CommentAdapter;
 import com.example.naren.mango.model.Comment;
@@ -40,7 +43,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -70,10 +72,10 @@ public class DetailPostFragment extends Fragment {
             mDomain, mLinkDomain, mTime;
     private ImageView mPostImage;
     private ViewPager mViewPager;
-    private LinearLayout mLinearLayout;
+    private LinearLayout mPlaceholder;
     private Toolbar mToolbar;
     private SwipeRefreshLayout mSwipeRefreshLayout;
-
+    private ProgressBar mProgressbar;
 
     private String id;
     private String url;
@@ -85,6 +87,10 @@ public class DetailPostFragment extends Fragment {
     private int comments;
     private String permalink;
     private int time;
+    private String thumbnail;
+    private String youtube_thumbnail;
+
+
 
 
     /**
@@ -115,7 +121,7 @@ public class DetailPostFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
-
+            setHasOptionsMenu(true);
 
         }
     }
@@ -133,10 +139,31 @@ public class DetailPostFragment extends Fragment {
         activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         activity.getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        mProgressbar = (ProgressBar) rootView.findViewById(R.id.progressbar);
+
+        mToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+                switch (item.getItemId()) {
+
+
+                    case R.id.action_refresh:
+                        mListView.setVisibility(View.GONE);
+                        mProgressbar.setVisibility(View.VISIBLE);
+                        new CommentProcessor().fetchComments();
+                        mListView.smoothScrollToPosition(0,0);
+
+                        return true;
+
+                }
+
+                return true;
+            }
+        });
+
         bundle = getActivity().getIntent().getExtras();
         mViewPager = (ViewPager) getActivity().findViewById(R.id.viewPager);
-
-        mLinearLayout = (LinearLayout) rootView.findViewById(R.id.container);
 
         initializeBundleData();
 
@@ -150,9 +177,10 @@ public class DetailPostFragment extends Fragment {
         mComments = (TextView) header.findViewById(R.id.post_comments);
         mSubreddit = (TextView) header.findViewById(R.id.post_subreddit);
         mDomain = (TextView) header.findViewById(R.id.post_domain);
-        mTime = (TextView) header.findViewById(R.id.post_time);
+//        mTime = (TextView) header.findViewById(R.id.post_time);
         mAuthor = (TextView) header.findViewById(R.id.post_author);
         mLinkDomain = (TextView) header.findViewById(R.id.link_domain);
+        mPlaceholder = (LinearLayout) header.findViewById(R.id.post_link_placeholder);
 
         mCardView = (CardView) header.findViewById(R.id.card_view);
         mCardView.setPreventCornerOverlap(false);
@@ -204,31 +232,240 @@ public class DetailPostFragment extends Fragment {
         comments = bundle.getInt("comments");
         permalink = bundle.getString("permalink");
         time = bundle.getInt("time");
+        thumbnail = bundle.getString("thumbnail");
+        youtube_thumbnail = bundle.getString("youtube_thumbnail");
+
 
     }
 
     private void attachBundleData() {
 
+        final String jpegImageUrl = url + ".jpg";
+
         Glide.with(this).load(url).into(mPostImage);
 
-        mTime.setText(time + " hrs ago");
+        if (domain.equals("imgur.com") || domain.equals("i.imgur.com") ||
+                domain.equals("m.imgur.com")) {
 
-        mPostImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+            if (!url.equals(jpegImageUrl)) {
 
-                Intent intent = new Intent(getActivity(), ExpandedImageView.class);
+                Glide.with(this).load(jpegImageUrl).into(mPostImage);
+                mPlaceholder.setVisibility(View.VISIBLE);
 
-                Bundle bundle = new Bundle();
+                mLinkDomain.setText("[Image] " + domain);
 
-                bundle.putString("image", url);
+                mPostImage.setOnClickListener(new View.OnClickListener() {
 
-                intent.putExtras(bundle);
+                    @Override
+                    public void onClick(View view) {
 
-                startActivity(intent);
+                        Intent intent = new Intent(getContext(), ExpandedImageView.class);
+
+                        Bundle bundle = new Bundle();
+
+                        bundle.putString("image", jpegImageUrl);
+
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+
+                    }
+                });
+
+                mPlaceholder.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        mViewPager.setCurrentItem(1);
+
+
+                    }
+                });
+
+
+            } else {
+
+                Glide.with(this).load(url).into(mPostImage);
+                mPlaceholder.setVisibility(View.VISIBLE);
+                mLinkDomain.setText("[Image] " + domain);
+
+                mPostImage.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View view) {
+
+                        Intent intent = new Intent(getContext(), ExpandedImageView.class);
+
+                        Bundle bundle = new Bundle();
+
+                        bundle.putString("image", jpegImageUrl);
+
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+
+                    }
+                });
+
+                mPlaceholder.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        mViewPager.setCurrentItem(1);
+
+
+                    }
+                });
+
 
             }
-        });
+        }
+
+        if (url.contains(".gif") || url.contains("gfy")) {
+
+            Glide.with(this).load(thumbnail).into(mPostImage);
+
+            mPlaceholder.setVisibility(View.VISIBLE);
+            mLinkDomain.setText("[Gif] " + domain);
+
+            mPostImage.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View view) {
+
+                    Intent intent = new Intent(getContext(), GifActivity.class);
+
+                    Bundle bundle = new Bundle();
+
+                    bundle.putString("gif", url);
+
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+
+                }
+            });
+
+
+            mPlaceholder.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    mViewPager.setCurrentItem(1);
+
+
+                }
+            });
+
+        } else if (domain.equals("youtube.com") || domain.equals("youtu.be")
+                || domain.equals("m.youtube.com")) {
+
+            Glide.with(this).load(youtube_thumbnail).into(mPostImage);
+
+            mPlaceholder.setVisibility(View.VISIBLE);
+            mLinkDomain.setText("[Video] " + domain);
+
+            mPostImage.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View view) {
+
+                    Intent intent = new Intent(getContext(), YoutubeActivity.class);
+
+                    Bundle bundle = new Bundle();
+
+                    bundle.putString("youtube_link", url);
+
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+
+                }
+            });
+
+            mPlaceholder.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    mViewPager.setCurrentItem(1);
+
+                }
+            });
+
+        }
+
+        if (domain.contains("imgur") || domain.contains("youtube") ||
+                domain.contains("youtu.be") || url.contains(".gif") || url.contains("gfy")
+                || url.contains(".jpg") || url.equals(jpegImageUrl)) {
+
+            if (url.contains("/gallery/") || url.contains("/a/")) {
+
+                Glide.with(this).load(thumbnail).into(mPostImage);
+
+                mPlaceholder.setVisibility(View.VISIBLE);
+                mLinkDomain.setText("[Album] " + domain);
+
+                mPostImage.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View view) {
+
+                        Intent intent = new Intent(getContext(), WebActivity.class);
+
+                        Bundle bundle = new Bundle();
+
+                        bundle.putString("web_link", url);
+
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+
+                    }
+                });
+
+                mPlaceholder.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        mViewPager.setCurrentItem(1);
+
+                    }
+                });
+
+            }
+
+        } else {
+
+            mPlaceholder.setVisibility(View.VISIBLE);
+            mLinkDomain.setText("[Link] " + domain);
+
+            mPlaceholder.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    mViewPager.setCurrentItem(1);
+
+                }
+            });
+
+        }
+
+
+//        Glide.with(this).load(url).into(mPostImage);
+//
+//        mTime.setText(time + " hrs ago");
+//
+//        mPostImage.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                Intent intent = new Intent(getActivity(), ExpandedImageView.class);
+//
+//                Bundle bundle = new Bundle();
+//
+//                bundle.putString("image", url);
+//
+//                intent.putExtras(bundle);
+//
+//                startActivity(intent);
+//
+//            }
+//        });
 
         mPostTitle.setText(title);
         mAuthor.setText(author);
@@ -237,128 +474,128 @@ public class DetailPostFragment extends Fragment {
         mPostScore.setText(postScore + " points");
         mComments.setText(comments + " comments");
 
-        if (url.contains("youtube") && url.contains("youtu.be")) {
-
-            mLinkDomain.setText("[Youtube] " + domain);
-
-            mLinkDomain.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View view) {
-
-                    Intent intent = new Intent(getActivity(), YoutubeActivity.class);
-
-                    Bundle bundle = new Bundle();
-                    bundle.putString("youtube_link", url);
-                    intent.putExtras(bundle);
-                    startActivity(intent);
-
-                }
-            });
-
-        } else if (url.contains("gallery") && url.contains("imgur") && domain.contains("imgur")) {
-
-            mLinkDomain.setText("[Album] " + domain);
-
-            mLinkDomain.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-
-                    mViewPager.setCurrentItem(1);
-
-
-                }
-            });
-
-        } else if (url.contains("imgur.com/a")) {
-
-            mLinkDomain.setText("[Album] " + domain);
-
-            mLinkDomain.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    mViewPager.setCurrentItem(1);
-
-
-                }
-            });
-
-
-        } else if (url.contains(".gif") || url.contains(".gifv") || url.contains("gfy") ||
-                url.contains("gfycat")) {
-
-            mLinkDomain.setText("[Gif] " + domain);
-
-            mLinkDomain.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    Intent intent = new Intent(getActivity(), GifActivity.class);
-
-                    Bundle bundle = new Bundle();
-
-                    bundle.putString("gif", url);
-
-                    intent.putExtras(bundle);
-
-                    startActivity(intent);
-
-                }
-            });
-
-        } else if (!url.contains("imgur") && !url.contains("gallery") &&
-                !url.contains("gif") &&
-                !url.contains("gifv") &&
-                !url.contains("gfy") &&
-                !url.contains("gfycat") &&
-                !url.contains("gallery") &&
-                !url.contains("youtube") &&
-                !url.contains("youtu.be") &&
-                !domain.contains("imgur") &&
-                !domain.contains("youtube") &&
-                !domain.contains("youtu.be") &&
-                !domain.contains("gfycat")) {
-
-            mLinkDomain.setText("[Link] " + domain);
-
-            mLinkDomain.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    mViewPager.setCurrentItem(1);
-
-
-                }
-            });
-
-        } else {
-
-            mLinkDomain.setText("[Link] " + domain);
-
-            mLinkDomain.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    mViewPager.setCurrentItem(1);
-
-                }
-            });
-
-        }
-
     }
 
-    public class CommentProcessor {
+//        if (url.contains("youtube") && url.contains("youtu.be")) {
+//
+//            mLinkDomain.setText("[Youtube] " + domain);
+//
+//            mLinkDomain.setOnClickListener(new View.OnClickListener() {
+//
+//                @Override
+//                public void onClick(View view) {
+//
+//                    Intent intent = new Intent(getActivity(), YoutubeActivity.class);
+//
+//                    Bundle bundle = new Bundle();
+//                    bundle.putString("youtube_link", url);
+//                    intent.putExtras(bundle);
+//                    startActivity(intent);
+//
+//                }
+//            });
+//
+//        } else if (url.contains("gallery") && url.contains("imgur") && domain.contains("imgur")) {
+//
+//            mLinkDomain.setText("[Album] " + domain);
+//
+//            mLinkDomain.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//
+//
+//                    mViewPager.setCurrentItem(1);
+//
+//
+//                }
+//            });
+//
+//        } else if (url.contains("imgur.com/a")) {
+//
+//            mLinkDomain.setText("[Album] " + domain);
+//
+//            mLinkDomain.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//
+//                    mViewPager.setCurrentItem(1);
+//
+//
+//                }
+//            });
+//
+//
+//        } else if (url.contains(".gif") || url.contains(".gifv") || url.contains("gfy") ||
+//                url.contains("gfycat")) {
+//
+//            mLinkDomain.setText("[Gif] " + domain);
+//
+//            mLinkDomain.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//
+//                    Intent intent = new Intent(getActivity(), GifActivity.class);
+//
+//                    Bundle bundle = new Bundle();
+//
+//                    bundle.putString("gif", url);
+//
+//                    intent.putExtras(bundle);
+//
+//                    startActivity(intent);
+//
+//                }
+//            });
+//
+//        } else if (!url.contains("imgur") && !url.contains("gallery") &&
+//                !url.contains("gif") &&
+//                !url.contains("gifv") &&
+//                !url.contains("gfy") &&
+//                !url.contains("gfycat") &&
+//                !url.contains("gallery") &&
+//                !url.contains("youtube") &&
+//                !url.contains("youtu.be") &&
+//                !domain.contains("imgur") &&
+//                !domain.contains("youtube") &&
+//                !domain.contains("youtu.be") &&
+//                !domain.contains("gfycat")) {
+//
+//            mLinkDomain.setText("[Link] " + domain);
+//
+//            mLinkDomain.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//
+//                    mViewPager.setCurrentItem(1);
+//
+//
+//                }
+//            });
+//
+//        } else {
+//
+//            mLinkDomain.setText("[Link] " + domain);
+//
+//            mLinkDomain.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//
+//                    mViewPager.setCurrentItem(1);
+//
+//                }
+//            });
+//
+//        }
+//
+//    }
 
+    public class CommentProcessor {
 
         public CommentProcessor() {
 
         }
 
         ArrayList<Comment> fetchComments() {
-
 
             final JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET,
                     Comment.BASE_COMMENT_URL + permalink + ".json?" + "raw_json=1", new Response.Listener<JSONArray>() {
@@ -372,6 +609,7 @@ public class DetailPostFragment extends Fragment {
                         adapter.notifyDataSetChanged();
                         mSwipeRefreshLayout.setRefreshing(false);
                         mListView.setVisibility(View.VISIBLE);
+                        mProgressbar.setVisibility(View.GONE);
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -442,6 +680,12 @@ public class DetailPostFragment extends Fragment {
         }
     }
 
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_detailed_post, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
 }
 
 

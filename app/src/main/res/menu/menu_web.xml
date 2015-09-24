@@ -36,15 +36,12 @@
         android:orderInCategory="500"
         android:title="@string/action_readability"
         app:showAsAction="never"
-        android:checkable="true"
         />
     <item
         android:id="@+id/action_desktop"
         android:orderInCategory="600"
         android:title="@string/action_desktop"
         app:showAsAction="never"
-        android:checkable="true"
-
         />
     <item
         android:id="@+id/action_browser"

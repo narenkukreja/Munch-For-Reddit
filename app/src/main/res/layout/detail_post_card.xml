@@ -136,23 +136,23 @@
                     android:textStyle="bold"
                     android:visibility="gone" />
 
-                <TextView
-                    android:id="@+id/post_bullet3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" • "
-                    android:textColor="@color/grey_500"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                <!--<TextView-->
+                    <!--android:id="@+id/post_bullet3"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text=" • "-->
+                    <!--android:textColor="@color/grey_500"-->
+                    <!--android:textSize="14sp"-->
+                    <!--android:textStyle="bold" />-->
 
-                <TextView
-                    android:id="@+id/post_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" 3hrs"
-                    android:textColor="#8699b1"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                <!--<TextView-->
+                    <!--android:id="@+id/post_time"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text=" 3hrs"-->
+                    <!--android:textColor="#8699b1"-->
+                    <!--android:textSize="12sp"-->
+                    <!--android:textStyle="bold" />-->
 
             </LinearLayout>
 

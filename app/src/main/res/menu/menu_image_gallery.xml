@@ -2,9 +2,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.naren.mango.activities.ImageGalleryActivity">
-    <item
-        android:id="@+id/action_open_browser"
-        android:orderInCategory="100"
-        android:title="@string/open_gallery"
-        app:showAsAction="never" />
+
+
+    <!--<item-->
+        <!--android:id="@+id/action_open_browser"-->
+        <!--android:orderInCategory="100"-->
+        <!--android:title="@string/open_gallery"-->
+        <!--app:showAsAction="never" />-->
 </menu>
