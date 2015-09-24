@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -38,6 +39,7 @@ public class ExpandedImageView extends AppCompatActivity {
     private PhotoViewAttacher mPhotoViewAttacher;
     private PhotoView mPhotoView;
     private String imageUrl;
+    private ProgressBar mProgressbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +52,12 @@ public class ExpandedImageView extends AppCompatActivity {
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mPhotoView = (PhotoView) findViewById(R.id.expanded_image);
-
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle("Back");
+
+        mProgressbar = (ProgressBar) findViewById(R.id.progressbar);
 
         Bundle bundle = getIntent().getExtras();
         imageUrl = bundle.getString("image");
@@ -142,7 +145,20 @@ public class ExpandedImageView extends AppCompatActivity {
 
     }
 
-    public class MyAsyncTask extends AsyncTask<String, Void, Boolean> {
+    public class MyAsyncTask extends AsyncTask<String, Integer, Boolean> {
+
+        int counter = 0;
+
+        @Override
+        protected void onPreExecute() {
+            mProgressbar.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            mProgressbar.setProgress(values[0]);
+
+        }
 
         @Override
         protected Boolean doInBackground(String... params) {
@@ -172,9 +188,16 @@ public class ExpandedImageView extends AppCompatActivity {
                 while ((read = inputStream.read(buffer)) != -1) {
 
                     if (outputStream != null) {
-
                         outputStream.write(buffer, 0, read);
 
+                        while (counter < 5) {
+
+                            SystemClock.sleep(500);
+                            counter++;
+                            publishProgress(counter * 20);
+                        }
+
+                        publishProgress(counter);
                     }
                 }
 
@@ -211,7 +234,8 @@ public class ExpandedImageView extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Boolean aBoolean) {
-            Toast.makeText(ExpandedImageView.this, "Download Image Successful", Toast.LENGTH_LONG).show();
+            mProgressbar.setVisibility(View.GONE);
+            Toast.makeText(ExpandedImageView.this, "Image Downloaded Successfully", Toast.LENGTH_LONG).show();
         }
     }
 }

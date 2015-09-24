@@ -13,6 +13,17 @@
         android:layout_height="wrap_content"
         />
 
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="?android:progressBarStyleHorizontal"
+        android:indeterminate="false"
+        android:max="100"
+        android:visibility="gone"
+
+        />
+
     <uk.co.senab.photoview.PhotoView
         android:id="@+id/expanded_image"
         android:layout_width="match_parent"

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Environment;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -12,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -31,6 +33,7 @@ public class GifActivity extends AppCompatActivity {
     private String gifUrl;
     private WebView mGifWebView;
     private Toolbar mToolbar;
+    private ProgressBar mProgressbar;
 
 
     @Override
@@ -46,6 +49,9 @@ public class GifActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle("Back");
+
+        mProgressbar = (ProgressBar) findViewById(R.id.progressbar);
+
 
         Bundle bundle = getIntent().getExtras();
 
@@ -122,7 +128,20 @@ public class GifActivity extends AppCompatActivity {
         }
     }
 
-    public class MyAsyncTask extends AsyncTask<String, Void, Boolean> {
+    public class MyAsyncTask extends AsyncTask<String, Integer, Boolean> {
+
+        int counter = 0;
+
+        @Override
+        protected void onPreExecute() {
+            mProgressbar.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            mProgressbar.setProgress(values[0]);
+
+        }
 
         @Override
         protected Boolean doInBackground(String... params) {
@@ -152,8 +171,16 @@ public class GifActivity extends AppCompatActivity {
                 while ((read = inputStream.read(buffer)) != -1) {
 
                     if (outputStream != null) {
-
                         outputStream.write(buffer, 0, read);
+
+                        while (counter < 5) {
+
+                            SystemClock.sleep(500);
+                            counter++;
+                            publishProgress(counter * 20);
+                        }
+
+                        publishProgress(counter);
 
                     }
                 }
@@ -191,7 +218,8 @@ public class GifActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Boolean aBoolean) {
-            Toast.makeText(GifActivity.this, "Download Successful", Toast.LENGTH_LONG).show();
+            mProgressbar.setVisibility(View.GONE);
+            Toast.makeText(GifActivity.this, "Gif Downloaded Successfully", Toast.LENGTH_LONG).show();
         }
     }
 

@@ -59,6 +59,12 @@ public class WebActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mWebView.onPause();
+    }
+
     // Manages the behavior when URLs are loaded
     private class MyBrowser extends WebViewClient {
         @Override

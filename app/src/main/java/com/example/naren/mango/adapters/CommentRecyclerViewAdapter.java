@@ -85,7 +85,7 @@ public class CommentRecyclerViewAdapter extends RecyclerView.Adapter<CommentRecy
 //            comment_indicator_color = (LinearLayout) itemView.findViewById(R.id.comment_indicator_color);
 //            comment_author = (TextView) itemView.findViewById(R.id.comment_author);
             comment_score = (TextView) itemView.findViewById(R.id.comment_score);
-            comment_time = (TextView) itemView.findViewById(R.id.comment_time);
+//            comment_time = (TextView) itemView.findViewById(R.id.comment_time);
             comment_body = (TextView) itemView.findViewById(R.id.comment_body);
 
         }

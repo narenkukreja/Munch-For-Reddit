@@ -44,7 +44,6 @@ public class CommentAdapter extends ArrayAdapter<Comment> {
 
     ArrayList<Comment> comments = new ArrayList<>();
 
-
     public CommentAdapter(Context context, ArrayList<Comment> comments) {
         super(context, 0, comments);
         this.comments = comments;
@@ -64,15 +63,16 @@ public class CommentAdapter extends ArrayAdapter<Comment> {
 
         Comment comment = getItem(position);
 
-        final long time = comment.getComment_time();
-        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
-        calendar.setTimeZone(TimeZone.getDefault());
-        calendar.setTimeInMillis(time * 1000);
+        //Figure out how to properly display post time
 
-
-        final int hour = calendar.get(Calendar.HOUR_OF_DAY);
-        int minute = calendar.get(Calendar.MINUTE);
-
+//        final long time = comment.getComment_time();
+//        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+//        calendar.setTimeZone(TimeZone.getDefault());
+//        calendar.setTimeInMillis(time * 1000);
+//
+//
+//        final int hour = calendar.get(Calendar.HOUR_OF_DAY);
+//        int minute = calendar.get(Calendar.MINUTE);
 
         if (convertView == null) {
 
@@ -83,9 +83,8 @@ public class CommentAdapter extends ArrayAdapter<Comment> {
             holder.comment_indicator_color = (LinearLayout) convertView.findViewById(R.id.comment_indicator_color);
             holder.comment_author = (TextView) convertView.findViewById(R.id.comment_author);
             holder.comment_score = (TextView) convertView.findViewById(R.id.comment_score);
-            holder.comment_time = (TextView) convertView.findViewById(R.id.comment_time);
+//            holder.comment_time = (TextView) convertView.findViewById(R.id.comment_time);
             holder.comment_body = (TextView) convertView.findViewById(R.id.comment_body);
-//            holder.comment_container = (LinearLayout) convertView.findViewById(R.id.comment_container);
 
             convertView.setTag(holder);
 
@@ -98,38 +97,7 @@ public class CommentAdapter extends ArrayAdapter<Comment> {
         holder.comment_score.setText(comment.getComment_score() + "points");
         holder.comment_body.setText(Html.fromHtml(comment.getComment_body()));
         holder.comment_body.setMovementMethod(LinkMovementMethod.getInstance());
-        holder.comment_time.setText(hour + " hrs ago");
-
-
-//        if (comments.get(position).level == 0 && OP.equals(author) && OP.length() == author.length() && OP.contains(author)){
-//            holder.comment_author.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.blue_800));
-//            holder.comment_author.setTextColor(Color.WHITE);
-//
-//        } else if (comments.get(position).level == 1 && OP.equals(author) && OP.length() == author.length() && OP.contains(author)){
-//            holder.comment_author.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.blue_800));
-//            holder.comment_author.setTextColor(Color.WHITE);
-//
-//        }else if (comments.get(position).level == 2 && OP.equals(author) && OP.length() == author.length() && OP.contains(author)){
-//            holder.comment_author.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.blue_800));
-//            holder.comment_author.setTextColor(Color.WHITE);
-//
-//        } else if (comments.get(position).level == 3 && OP.equals(author) && OP.length() == author.length() && OP.contains(author)){
-//            holder.comment_author.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.blue_800));
-//            holder.comment_author.setTextColor(Color.WHITE);
-//
-//        } else if (comments.get(position).level == 4 && OP.equals(author) && OP.length() == author.length() && OP.contains(author)){
-//            holder.comment_author.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.blue_800));
-//            holder.comment_author.setTextColor(Color.WHITE);
-//
-//        } else if (comments.get(position).level == 5 && OP.equals(author) && OP.length() == author.length() && OP.contains(author)){
-//
-//            holder.comment_author.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.blue_800));
-//            holder.comment_author.setTextColor(Color.WHITE);
-//        } else if (comments.get(position).level == 6 && OP.equals(author) && OP.length() == author.length() && OP.contains(author)){
-//            holder.comment_author.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.blue_800));
-//            holder.comment_author.setTextColor(Color.WHITE);
-//
-//        }
+//        holder.comment_time.setText(hour + " hrs ago");
 
         if (comments.get(position).level == 0) {
 
@@ -175,13 +143,8 @@ public class CommentAdapter extends ArrayAdapter<Comment> {
             holder.comment_indicator_color.setVisibility(View.VISIBLE);
         }
 
-
-
         return convertView;
-
-
     }
-
 
     private static class MyViewHolder {
 

@@ -15,6 +15,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <ProgressBar
+        android:layout_below="@id/toolbar"
+        android:id="@+id/progressbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="?android:progressBarStyleHorizontal"
+        android:indeterminate="false"
+        android:max="100"
+        android:visibility="gone"
+
+        />
+
     <WebView
         android:id="@+id/gif_webView"
         android:layout_width="match_parent"

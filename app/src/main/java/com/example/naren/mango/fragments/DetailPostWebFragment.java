@@ -228,5 +228,11 @@ public class DetailPostWebFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        mWebView.onPause();
+    }
+
 
 }

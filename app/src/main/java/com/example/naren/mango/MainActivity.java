@@ -34,7 +34,6 @@ import com.example.naren.mango.fragments.FuturologyFragment;
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
-    private CollapsingToolbarLayout mCollapsingToolbar;
     private ActionBarDrawerToggle mToggle;
     private NavigationView mNavigationView;
     private Toolbar mToolbar;
@@ -51,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         mNavigationView = (NavigationView) findViewById(R.id.navigationView);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setTitle("Reddit");
+        getSupportActionBar().setTitle("Munch");
 
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.drawer_open,
                 R.string.drawer_close);
