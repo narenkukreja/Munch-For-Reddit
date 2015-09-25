@@ -1,7 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.naren.mango.activities.YoutubeActivity"
+    tools:context="com.example.naren.munch.activities.YoutubeActivity"
     android:background="@color/black"
     android:id="@+id/youtube_root"
     android:onClick="onClick"

@@ -45,7 +45,6 @@
     </android.support.design.widget.CoordinatorLayout>
 
 
-
     <android.support.design.widget.NavigationView
         android:id="@+id/navigationView"
         android:layout_width="match_parent"

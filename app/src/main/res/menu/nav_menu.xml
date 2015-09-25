@@ -5,29 +5,28 @@
 
         <item android:title="Coming Soon">
 
-            <menu >
+            <menu>
 
                 <item
                     android:id="@+id/nav_profile"
-                    android:title="Profile"
                     android:icon="@drawable/ic_account_circle_white_24dp"
-                    />
+                    android:title="Profile" />
                 <item
                     android:id="@+id/nav_messages"
-                    android:title="Messages"
-                    android:icon="@drawable/ic_mail_white_24dp"/>
+                    android:icon="@drawable/ic_mail_white_24dp"
+                    android:title="Messages" />
                 <item
                     android:id="@+id/nav_user"
-                    android:title="User"
-                    android:icon="@drawable/ic_supervisor_account_white_24dp"/>
+                    android:icon="@drawable/ic_supervisor_account_white_24dp"
+                    android:title="User" />
                 <item
                     android:id="@+id/nav_Subreddit"
-                    android:title="Subreddit"
-                    android:icon="@drawable/ic_bookmark_white_24dp"/>
+                    android:icon="@drawable/ic_bookmark_white_24dp"
+                    android:title="Subreddit" />
                 <item
                     android:id="@+id/nav_settings"
-                    android:title="Settings"
-                    android:icon="@drawable/ic_settings_white_24dp"/>
+                    android:icon="@drawable/ic_settings_white_24dp"
+                    android:title="Settings" />
 
             </menu>
 
@@ -49,65 +48,176 @@
                     android:id="@+id/item_all"
                     android:title="all" />
                 <item
+                    android:id="@+id/item_aww"
+                    android:title="aww" />
+                <item
                     android:id="@+id/item_art"
-                    android:title="Art" />
+                    android:title="art" />
                 <item
                     android:id="@+id/item_askreddit"
-                    android:title="AskReddit" />
+                    android:title="askreddit" />
+                <item
+                    android:id="@+id/item_askscience"
+                    android:title="askscience" />
+
+                <item
+                    android:id="@+id/item_announcements"
+                    android:title="announcements" />
+
+                <item
+                    android:id="@+id/item_blog"
+                    android:title="blog" />
+                <item
+                    android:id="@+id/item_books"
+                    android:title="books" />
+                <item
+                    android:id="@+id/item_creepy"
+                    android:title="creepy" />
+                <item
+                    android:id="@+id/item_dataisbeautiful"
+                    android:title="dataisbeautiful" />
+
                 <item
                     android:id="@+id/item_diy"
-                    android:title="DIY" />
+                    android:title="diy" />
+
                 <item
                     android:id="@+id/item_documentaries"
-                    android:title="Documentaries" />
+                    android:title="documentaries" />
+
+                <item
+                    android:id="@+id/item_earthporn"
+                    android:title="earthporn" />
+
+                <item
+                    android:id="@+id/item_eli5"
+                    android:title="explainlikeimfive" />
 
 
-                <!--<item android:title="Earthporn" />-->
-                <!--<item android:title="Fitness" />-->
-                <!--<item android:title="Futurology" />-->
-                <!--<item android:title="GetMotivated" />-->
-                <!--<item android:title="IAmA" />-->
-                <!--<item android:title="InternetIsBeautiful" />-->
-                <!--<item android:title="Jokes" />-->
-                <!--<item android:title="LifeProTips" />-->
-                <!--<item android:title="Music" />-->
-                <!--<item android:title="OldSchoolCool" />-->
-                <!--<item android:title="ShowerThoughts" />-->
-                <!--<item android:title="TwoXChromosomes" />-->
-                <!--<item android:title="UpliftingNews" />-->
-                <!--<item android:title="WritingPrompts" />-->
-                <!--<item android:title="announcements" />-->
-                <!--<item android:title="askscience" />-->
-                <!--<item android:title="aww" />-->
-                <!--<item android:title="blog" />-->
-                <!--<item android:title="books" />-->
-                <!--<item android:title="creepy" />-->
-                <!--<item android:title="dataisbeautiful" />-->
-                <!--<item android:title="explainlikeimfive" />-->
-                <!--<item android:title="food" />-->
-                <!--<item android:title="funny" />-->
-                <!--<item android:title="gadgets" />-->
-                <!--<item android:title="gaming" />-->
-                <!--<item android:title="gifs" />-->
-                <!--<item android:title="history" />-->
-                <!--<item android:title="listentothis" />-->
-                <!--<item android:title="mildlyinteresting" />-->
-                <!--<item android:title="movies" />-->
-                <!--<item android:title="news" />-->
-                <!--<item android:title="nosleep" />-->
-                <!--<item android:title="nottheonion" />-->
-                <!--<item android:title="personalfinance" />-->
-                <!--<item android:title="philosophy" />-->
-                <!--<item android:title="photoshopbattles" />-->
-                <!--<item android:title="pics" />-->
-                <!--<item android:title="science" />-->
-                <!--<item android:title="space" />-->
-                <!--<item android:title="sports" />-->
-                <!--<item android:title="television" />-->
-                <!--<item android:title="tifu" />-->
-                <!--<item android:title="todayilearned" />-->
-                <!--<item android:title="videos" />-->
-                <!--<item android:title="worldnews" />-->
+                <item
+                    android:id="@+id/item_fitness"
+                    android:title="fitness" />
+
+                <item
+                    android:id="@+id/item_food"
+                    android:title="food" />
+                <item
+                    android:id="@+id/item_funny"
+                    android:title="funny" />
+
+
+                <item
+                    android:id="@+id/item_futurology"
+                    android:title="futurology" />
+
+                <item
+                    android:id="@+id/item_gadgets"
+                    android:title="gadgets" />
+                <item
+                    android:id="@+id/item_gaming"
+                    android:title="gaming" />
+                <item
+                    android:id="@+id/item_getmotivated"
+                    android:title="GetMotivated" />
+
+                <item
+                    android:id="@+id/item_gifs"
+                    android:title="gifs" />
+                <item
+                    android:id="@+id/item_history"
+                    android:title="history" />
+
+
+                <item
+                    android:id="@+id/item_iama"
+                    android:title="iama" />
+                <item
+                    android:id="@+id/item_internetisbeautiful"
+                    android:title="internetisbeautiful" />
+                <item
+                    android:id="@+id/item_jokes"
+                    android:title="jokes" />
+                <item
+                    android:id="@+id/item_lpt"
+                    android:title="lifeprotips" />
+                <item
+                    android:id="@+id/item_listentothis"
+                    android:title="listentothis" />
+                <item
+                    android:id="@+id/item_mildlyinteresting"
+                    android:title="mildlyinteresting" />
+                <item
+                    android:id="@+id/item_movies"
+                    android:title="movies" />
+
+
+                <item
+                    android:id="@+id/item_music"
+                    android:title="music" />
+
+                <item
+                    android:id="@+id/item_news"
+                    android:title="news" />
+                <item
+                    android:id="@+id/item_nosleep"
+                    android:title="nosleep" />
+                <item
+                    android:id="@+id/item_nottheonion"
+                    android:title="nottheonion" />
+                <item
+                    android:id="@+id/item_oldschoolcool"
+                    android:title="oldschoolcool" />
+
+
+                <item
+                    android:id="@+id/item_personalfinance"
+                    android:title="personalfinance" />
+                <item
+                    android:id="@+id/item_philosophy"
+                    android:title="philosophy" />
+                <item
+                    android:id="@+id/item_photoshopbattles"
+                    android:title="photoshopbattles" />
+                <item
+                    android:id="@+id/item_pics"
+                    android:title="pics" />
+                <item
+                    android:id="@+id/item_science"
+                    android:title="science" />
+                <item
+                    android:id="@+id/item_showerthoughts"
+                    android:title="showerthoughts" />
+
+                <item
+                    android:id="@+id/item_space"
+                    android:title="space" />
+                <item
+                    android:id="@+id/item_sports"
+                    android:title="sports" />
+                <item
+                    android:id="@+id/item_television"
+                    android:title="television" />
+                <item
+                    android:id="@+id/item_tifu"
+                    android:title="tifu" />
+                <item
+                    android:id="@+id/item_til"
+                    android:title="todayilearned" />
+                <item
+                    android:id="@+id/item_twox"
+                    android:title="twoxchromosomes" />
+                <item
+                    android:id="@+id/item_upnews"
+                    android:title="upliftingnews" />
+                <item
+                    android:id="@+id/item_videos"
+                    android:title="videos" />
+                <item
+                    android:id="@+id/item_worldnews"
+                    android:title="worldnews" />
+                <item
+                    android:id="@+id/item_writingprompts"
+                    android:title="writingprompts" />
 
 
             </menu>

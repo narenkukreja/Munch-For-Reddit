@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
 
-    tools:context="com.example.naren.mango.activities.WebActivity">
+    tools:context="com.example.naren.munch.activities.WebActivity">
 
 
     <include layout="@layout/toolbar" ></include>

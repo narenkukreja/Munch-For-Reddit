@@ -1,4 +1,4 @@
-package com.example.naren.mango;
+package com.example.naren.munch;
 
 import org.junit.Test;
 

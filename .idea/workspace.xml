@@ -61,22 +61,65 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="922c7be2-8330-4599-be26-87d1ae8ea226" name="Default" comment="">
+    <list default="true" id="922c7be2-8330-4599-be26-87d1ae8ea226" name="Default" comment="Added progress bars for downloading images/gifs">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/fragments/AllFragment.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/fragments/ArtFragment.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/fragments/AskRedditFragment.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/fragments/DIYFragment.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/fragments/DocumentariesFragment.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/fragments/EarthPornFragment.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/fragments/FitnessFragment.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/fragments/FuturologyFragment.java" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/example/naren/mango/ApplicationTest.java" afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/example/naren/munch/ApplicationTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/MainActivity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/activities/DetailedPostActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/activities/DetailedPostActivity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/activities/DetailedSelfPostActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/activities/DetailedSelfPostActivity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/activities/ExpandedImageView.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/activities/ExpandedImageView.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/activities/GifActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/activities/GifActivity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/activities/ImageGalleryActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/activities/ImageGalleryActivity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/activities/WebActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/activities/WebActivity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/activities/YoutubeActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/activities/YoutubeActivity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/adapters/CommentAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/adapters/CommentAdapter.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/adapters/CommentRecyclerViewAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/adapters/CommentRecyclerViewAdapter.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/adapters/ImgurGalleryAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/adapters/ImgurGalleryAdapter.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/adapters/RecyclerViewAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/adapters/RecyclerViewAdapter.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/fragments/DetailPostFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/DetailPostFragment.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/fragments/DetailPostWebFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/DetailPostWebFragment.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/fragments/FrontPageFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/RedditPostFragment.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/model/Comment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/model/Comment.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/model/ImgurAlbum.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/model/ImgurAlbum.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/model/RedditPost.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/model/RedditPost.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/network/MyApplication.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/network/MyApplication.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/network/MySingleton.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/network/MySingleton.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/network/VolleySingleton.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/network/VolleySingleton.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_frontpage.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_redditpost.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileSnapshots.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/gradle_project_sync_data.bin" afterPath="$PROJECT_DIR$/build/intermediates/gradle_project_sync_data.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/adapters/CommentAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/adapters/CommentAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/adapters/CommentRecyclerViewAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/adapters/CommentRecyclerViewAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/fragments/DetailPostWebFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/fragments/DetailPostWebFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/activities/ExpandedImageView.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/activities/ExpandedImageView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/activities/GifActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/activities/GifActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/activities/WebActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/activities/WebActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/test/java/com/example/naren/mango/ExampleUnitTest.java" afterPath="$PROJECT_DIR$/app/src/test/java/com/example/naren/mango/ExampleUnitTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_expanded_image_view.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_expanded_image_view.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_gif.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_gif.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/comment_row.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/comment_row.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_web.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_web.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_youtube.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_youtube.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_detail_post_web.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_detail_post_web.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_detailed_post.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_detailed_post.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_detailed_self_post.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_detailed_self_post.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_expanded_image_view.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_expanded_image_view.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_gif.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_gif.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_gif_view.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_gif_view.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_image_gallery.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_image_gallery.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_web.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_web.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_youtube.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_youtube.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/nav_header.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/nav_header.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/nav_menu.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/nav_menu.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Mango.iws" />
@@ -97,7 +140,43 @@
     <favorites_list name="Mango" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="350" column="0" selection-start-line="350" selection-start-column="0" selection-end-line="350" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.22222222">
+              <caret line="46" column="4" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nav_menu.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/nav_menu.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="221" column="0" selection-start-line="221" selection-start-column="0" selection-end-line="221" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -1290,7 +1369,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="4321918029000" />
+        <entry key="$PROJECT_DIR$" value="4323303382000" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -1622,42 +1701,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/menu/web_fragment_menu.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_frontpage.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/model/RedditPost.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/detail_post_card.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/single_row.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_web.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_detailed_self_post.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_expanded_image_view.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_gif_view.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_image_gallery.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_youtube.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/activities/YoutubeActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/menu/nav_menu.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/detail_self_post_card.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/adapters/RecyclerViewAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/fragments/FrontPageFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_detailed_self_post.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/model/Comment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_detail_post.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/fragments/DetailPostFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/activities/DetailedSelfPostActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_detailed_post.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/activities/DetailedPostActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/comment_row.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/adapters/CommentAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/adapters/CommentRecyclerViewAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_expanded_image_view.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/activities/ExpandedImageView.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/activities/GifActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_gif.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/MoviesFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/MusicFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/NewsFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/NoSleepFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/NottheonoinFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/UpliftingNewsFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/TwoXChromosomesFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/ShowerThoughtsFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/OldSchoolFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/IAmAFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/GetMotivatedFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/FoodFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/ELI5Fragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/DataisbeautifulFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/BooksFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/BlogFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/WritingPromptsFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/HistoryFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/GifsFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/GamingFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/GadgetsFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/PersonalFinanceFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/PhilosophyFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/PHBattles.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/PicsFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/ScienceFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/SpaceFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/SportsFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/TelevisionFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/TifuFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/TILFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/WorldnewsFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/VideosFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/FunnyFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/FuturologyFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/CreepyFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/adapters/CommentRecyclerViewAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/adapters/ImgurGalleryAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/adapters/RecyclerViewAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/adapters/CommentAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/model/ImgurAlbum.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/model/RedditPost.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/activities/ImageGalleryActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/activities/DetailedPostActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/DetailPostFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/FrontPageFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/RedditPostFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/nav_header.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/activities/WebActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/fragments/DetailPostWebFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/menu/nav_menu.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
       </list>
     </option>
   </component>
@@ -1683,7 +1777,7 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="2" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
@@ -1692,7 +1786,7 @@
       <showMembers />
       <showModules />
       <showLibraryContents />
-      <hideEmptyPackages />
+      <hideEmptyPackages AndroidView="true" />
       <abbreviatePackageNames />
       <autoscrollToSource />
       <autoscrollFromSource />
@@ -1700,8 +1794,17 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mango" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="Scratches" />
-      <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -1722,6 +1825,24 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="res" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mango" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="menu" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -1770,7 +1891,7 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="mango" />
+              <option name="myItemId" value="munch" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1788,7 +1909,29 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="mango" />
+              <option name="myItemId" value="munch" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mango" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="munch" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -1810,11 +1953,11 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="mango" />
+              <option name="myItemId" value="munch" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="activities" />
+              <option name="myItemId" value="adapters" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1859,6 +2002,13 @@
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Cheddar-master" />
     <property name="FullScreen" value="false" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/naren/Google Drive/Programming/Android/Mango/app/src/main/java/com/example/naren/mango/activities/DetailedSelfPostActivity.java&#10;E&#9;FILE&#9;file:///Users/naren/Google Drive/Programming/Android/Mango/app/src/main/res/layout/comment_row.xml" />
+    <property name="android.project.structure.last.selected" value="app" />
+    <property name="android.project.structure.proportion" value="0.15" />
+  </component>
+  <component name="RecentsManager">
+    <key name="android.template.packageName">
+      <recent name="com.example.naren.munch.fragments" />
+    </key>
   </component>
   <component name="RunManager" selected="Android Application.app">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
@@ -2101,12 +2251,18 @@
       <option name="project" value="LOCAL" />
       <updated>1443058746675</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added progress bars for downloading images/gifs">
+      <created>1443118402201</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1443118402202</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="713" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998326" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2115,7 +2271,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.7035176" sideWeight="0.503231" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32956383" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32956383" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998326" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998326" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2123,7 +2279,8 @@
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.7035176" sideWeight="0.49676898" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24959612" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24959612" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998326" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -2134,7 +2291,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -2187,482 +2343,172 @@
     <MESSAGE value="Added refresh post functionality with progressbar&#10;&#10;&#10;" />
     <MESSAGE value="Hid some features to be added later&#10;&#10;" />
     <MESSAGE value="Added refresh post option to detailed post activities&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added refresh post option to detailed post activities&#10;" />
+    <MESSAGE value="Added progress bars for downloading images/gifs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added progress bars for downloading images/gifs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="32" />
+      <option name="time" value="33" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_image_gallery.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/adapters/ImgurGalleryAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4059754">
+          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/adapters/CommentRecyclerViewAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.1441125">
+          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/model/Comment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.36555362">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/model/ImgurAlbum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44288224">
+          <caret line="16" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/activities/ImageGalleryActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4059754">
+          <caret line="28" column="2" selection-start-line="28" selection-start-column="2" selection-end-line="28" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/adapters/RecyclerViewAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="11.404218">
+          <caret line="372" column="57" selection-start-line="372" selection-start-column="57" selection-end-line="372" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/DetailPostFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="226" column="25" selection-start-line="226" selection-start-column="25" selection-end-line="226" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/activities/DetailedPostActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.4762741">
+          <caret line="63" column="11" selection-start-line="63" selection-start-column="11" selection-end-line="63" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/model/RedditPost.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="68" selection-start-line="5" selection-start-column="68" selection-end-line="5" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/adapters/CommentAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.8418279">
+          <caret line="133" column="1" selection-start-line="133" selection-start-column="1" selection-end-line="133" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/fragments/RedditPostFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.3567662">
+          <caret line="112" column="13" selection-start-line="112" selection-start-column="13" selection-end-line="112" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4444#5005#0" expanded="true" />
+            <element signature="e#5004#5005#0" expanded="true" />
+            <element signature="e#5090#6254#0" expanded="true" />
+            <element signature="e#6253#6254#0" expanded="true" />
+            <element signature="e#6595#10033#0" expanded="true" />
+            <element signature="e#10032#10033#0" expanded="true" />
+            <element signature="e#10035#10266#0" expanded="true" />
+            <element signature="e#10265#10266#0" expanded="true" />
+            <element signature="e#10727#14165#0" expanded="true" />
+            <element signature="e#14164#14165#0" expanded="true" />
+            <element signature="e#14167#14398#0" expanded="true" />
+            <element signature="e#14397#14398#0" expanded="true" />
+            <element signature="e#14861#17960#0" expanded="true" />
+            <element signature="e#17959#17960#0" expanded="true" />
+            <element signature="e#18587#21686#0" expanded="true" />
+            <element signature="e#21685#21686#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Documents/Android SDK/sdk/platforms/android-23/android.jar!/android/app/Activity.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/nav_header.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22222222">
-          <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_youtube.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/detail_post_card.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5277778">
-          <caret line="146" column="0" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_detail_post_web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2611111">
-          <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/image_gallery_row.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/swipeback_custom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/toolbar.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/web_toolbar.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/single_row.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.11666667">
-          <caret line="168" column="15" selection-start-line="168" selection-start-column="15" selection-end-line="184" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_expanded_image_view.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29525483">
-          <caret line="8" column="39" selection-start-line="4" selection-start-column="8" selection-end-line="8" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_gif.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="-2.1724138">
+          <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_main.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18804921">
-          <caret line="11" column="39" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_image_gallery.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22144112">
-          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="10" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_gif_view.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18453427">
-          <caret line="5" column="4" selection-start-line="5" selection-start-column="8" selection-end-line="9" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_youtube.xml">
-      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="39" selection-start-line="4" selection-start-column="8" selection-end-line="8" selection-end-column="39" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/activities/YoutubeActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.318102">
-          <caret line="133" column="0" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/nav_menu.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+          <caret line="221" column="0" selection-start-line="221" selection-start-column="0" selection-end-line="221" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/detail_self_post_card.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.64444447">
-          <caret line="57" column="41" selection-start-line="57" selection-start-column="41" selection-end-line="57" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_detailed_self_post.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/naren/munch/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+          <caret line="350" column="0" selection-start-line="350" selection-start-column="0" selection-end-line="350" selection-end-column="0" />
           <folding>
-            <element signature="e#420#444#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_frontpage.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.965517">
-          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/adapters/RecyclerViewAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36906853">
-          <caret line="339" column="66" selection-start-line="339" selection-start-column="66" selection-end-line="339" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_detailed_self_post.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2611111">
-          <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/fragments/FrontPageFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="7.606327">
-          <caret line="351" column="0" selection-start-line="351" selection-start-column="0" selection-end-line="351" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Documents/Android SDK/sdk/platforms/android-23/android.jar!/java/lang/Object.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.9444444">
-          <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Documents/Android SDK/sdk/platforms/android-23/android.jar!/java/util/Collections.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Documents/Android SDK/sdk/platforms/android-23/android.jar!/java/lang/String.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.7037038">
-          <caret line="102" column="19" selection-start-line="102" selection-start-column="19" selection-end-line="102" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Documents/Android SDK/sdk/platforms/android-23/android.jar!/java/util/LinkedHashMap.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.7037038">
-          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Documents/Android SDK/sdk/platforms/android-23/android.jar!/org/json/JSONObject.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.7037038">
-          <caret line="140" column="18" selection-start-line="140" selection-start-column="18" selection-end-line="140" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Documents/Android SDK/sdk/platforms/android-23/android.jar!/org/json/JSONArray.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.7037038">
-          <caret line="33" column="15" selection-start-line="33" selection-start-column="15" selection-end-line="33" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_detailed_post.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3888889">
-          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_detail_post.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.689655">
-          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/activities/DetailedSelfPostActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="271" column="24" selection-start-line="271" selection-start-column="24" selection-end-line="271" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_detailed_post.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/activities/DetailedPostActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.4692442">
-          <caret line="123" column="0" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/fragments/DetailPostFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.07381371">
-          <caret line="154" column="39" selection-start-line="154" selection-start-column="39" selection-end-line="154" selection-end-column="39" />
-          <folding>
-            <element signature="e#14282#14336#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.support/design/23.0.1/jars/classes.jar!/android/support/design/widget/CollapsingToolbarLayout.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23247233">
-          <caret line="43" column="13" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/model/Comment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6274165">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding>
-            <element signature="e#622#623#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/comment_row.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.1724138">
-          <caret line="54" column="16" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="50" column="55" selection-start-line="50" selection-start-column="55" selection-end-line="50" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/adapters/CommentAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/adapters/CommentRecyclerViewAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36555362">
-          <caret line="91" column="5" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_expanded_image_view.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.793103">
-          <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/activities/ExpandedImageView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="237" column="81" selection-start-line="237" selection-start-column="52" selection-end-line="237" selection-end-column="81" />
-          <folding>
-            <element signature="e#4312#4313#0" expanded="true" />
-            <element signature="e#4376#4377#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/activities/GifActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="218" column="17" selection-start-line="218" selection-start-column="17" selection-end-line="218" selection-end-column="17" />
-          <folding>
-            <element signature="e#3838#3839#0" expanded="true" />
-            <element signature="e#3902#3903#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/nav_header.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_gif.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6611111">
-          <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/activities/WebActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/naren/mango/fragments/DetailPostWebFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0">
-          <caret line="234" column="5" selection-start-line="234" selection-start-column="5" selection-end-line="234" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.22222222">
+          <caret line="46" column="4" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="4" />
           <folding />
         </state>
       </provider>
