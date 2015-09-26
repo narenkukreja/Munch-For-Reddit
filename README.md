@@ -4,7 +4,7 @@ Munch For Reddit is an open source client for www.reddit.com that is interactive
 
 # Download
 
-Dropbox link: 
+Dropbox link: https://www.dropbox.com/sh/h2st5dg8x65bosk/AAB0Q3bs0Yd8ccuKc9gB0sENa?dl=0
 
 Currently the app is in alpha mode and if there is enough interest within the community , I will publish the app on the play store as normal and continue
 it's development with added features from myself and the community.
