@@ -1,5 +1,7 @@
-build
+build/
 app/build
+local.properties
+.gradle
 
 
 
