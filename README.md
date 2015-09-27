@@ -39,7 +39,11 @@ Munch is released under the **The GNU General Public License v3.0 (GPLv3)**.
 # Libraries Used
 
 Glide: https://github.com/bumptech/glide
+
 PhotoView: https://github.com/chrisbanes/PhotoView
+
 Selectable Round Image: https://github.com/pungrue26/SelectableRoundedImageView
+
 Swipeback: https://github.com/sockeqwe/SwipeBack
+
 Volley: https://github.com/mcxiaoke/android-volley
