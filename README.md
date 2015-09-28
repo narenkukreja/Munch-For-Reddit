@@ -12,6 +12,11 @@ it's development with added features from myself and the community.
 <img src="http://i.imgur.com/nvkQPa0.png" width="216" height="384" />
 <img src="http://i.imgur.com/mmXU2aS.png" width="216" height="384" />
 <img src="http://i.imgur.com/PSKIGOU.png" width="216" height="384" />
+<img src="http://i.imgur.com/3tbSqER.png" width="216" height="384" />
+<img src="http://i.imgur.com/rkIwVFF.png" width="216" height="384" />
+
+In action: https://gfycat.com/ConstantAcademicBoa
+
 
 # Features
 
