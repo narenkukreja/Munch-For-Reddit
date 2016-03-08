@@ -9,7 +9,7 @@ Dropbox link: https://www.dropbox.com/sh/h2st5dg8x65bosk/AAB0Q3bs0Yd8ccuKc9gB0sE
 Currently the app is in alpha mode and if there is enough interest within the community , I will publish the app on the play store as normal and continue
 it's development with added features from myself and the community.
 
-![Alt Text](https://github.com/narenkukreja/pinitboard/blob/master/app/assets/images/Pinitboards.gif)
+![Alt Text](https://github.com/narenkukreja/Munch-For-Reddit/blob/master/app/src/main/res/munch.gif)
 
 <img src="http://i.imgur.com/nvkQPa0.png" width="216" height="384" />
 <img src="http://i.imgur.com/mmXU2aS.png" width="216" height="384" />
@@ -19,10 +19,6 @@ it's development with added features from myself and the community.
 <img src="http://i.imgur.com/jJ7hU0p.png" width="216" height="384" />
 <img src="http://i.imgur.com/akWHTpE.png" width="216" height="384" />
 <img src="http://i.imgur.com/29eOooD.jpg" width="216" height="384" />
-
-
-
-
 
 In action: https://gfycat.com/ConstantAcademicBoa
 
