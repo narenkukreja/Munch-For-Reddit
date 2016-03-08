@@ -39,10 +39,6 @@ I highly encourage contributions to Munch. Since these are early days expect bug
 
 Munch is developed and maintained by [Naren Kukreja](https://github.com/narenkukreja). Feel free to reach out.
 
-# License
-
-Munch is released under the **The GNU General Public License v3.0 (GPLv3)**.
-
 # Libraries Used
 
 Glide: https://github.com/bumptech/glide
